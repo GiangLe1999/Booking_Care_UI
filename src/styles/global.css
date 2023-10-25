@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap");
+
+/* Common classes */
+body {
+  font-family: "Mukta", sans-serif;
+}
+
+.custom-shadow {
+  box-shadow: rgba(31, 31, 31, 0.12) 0px 1px 6px,
+    rgba(31, 31, 31, 0.12) 0px 1px 4px;
+}
+
+.text-gradient {
+  @apply bg-clip-text;
+  background: linear-gradient(90deg, #22c1c3 2.34%, #fdbb2d 100.78%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Admin menu */
+.item-level-1:hover .items-block-level-3 {
+  visibility: hidden;
+}
+
+/* Form */
+.form-title {
+  @apply text-[25px] text-slate-700 font-bold text-center py-2;
+}
+
+.form-input-label {
+  @apply text-sm text-slate-600 font-bold;
+}
+
+.form-link {
+  @apply text-[#22c1c3] font-bold ml-2 cursor-pointer underline;
+}
+
+/* Primary Button */
+.login-btn {
+  background-image: linear-gradient(90deg, #22c1c3 2.34%, #fdbb2d 100.78%);
+  transition: background-image 0.5s ease-in;
+  @apply relative py-3 px-4 rounded-sm
+    text-white font-bold;
+}
+
+.login-btn:hover::before {
+  opacity: 1;
+}
+
+.login-btn span {
+  @apply relative z-[3];
+}
+
+.login-btn::before {
+  @apply bg-[linear-gradient(315deg,#22c1c3,#057fa8)] absolute content-[''] w-full h-full transition-opacity duration-500 ease-[ease-out] z-[2] opacity-0 left-0 top-0 rounded-[5px];
+}

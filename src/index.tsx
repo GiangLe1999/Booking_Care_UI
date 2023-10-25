@@ -1,19 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/global.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider as StateProvider } from "react-redux";
+import { persistor, store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import Home from "./routes/home";
+import RootLayout from "./containers/root-layout";
+import SystemLayout from "./containers/system-layout";
+import ManageUser from "./routes/manage-user";
+import IntlProviderWrapper from "./containers/intl-provider-wrapper";
+import Login from "./routes/auth/login";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [{ path: "", element: <Home /> }],
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
+  },
+
+  {
+    path: "/system",
+    element: <SystemLayout />,
+    children: [{ path: "manage-user", element: <ManageUser /> }],
+  },
+]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <StateProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <IntlProviderWrapper>
+          <RouterProvider router={router} />
+          <ToastContainer />
+        </IntlProviderWrapper>
+      </PersistGate>
+    </StateProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
