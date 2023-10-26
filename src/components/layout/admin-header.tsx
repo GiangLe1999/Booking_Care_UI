@@ -9,7 +9,7 @@ interface Props {}
 const AdminHeader: FC<Props> = (props): JSX.Element => {
   const dispatch = useDispatch();
   return (
-    <div className="z-[99] flex justify-between items-center text-white bg-main_color relative">
+    <div className="z-[99] flex justify-between items-center text-white bg-admin_main_color relative">
       <div className="">
         <AdminNavigator />
       </div>

@@ -5,6 +5,7 @@ export const adminMenuItems = [
     menus: [
       {
         name: "menu.system.system-administrator.header",
+        link: "/system",
         subMenus: [
           {
             name: "menu.system.system-administrator.user-manage",

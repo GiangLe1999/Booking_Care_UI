@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { LoggedinUser } from "../../types";
+import { LoggedinUser } from "../../dtos/user.dto";
 
 export interface UserState {
   user: LoggedinUser | null;

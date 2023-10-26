@@ -22,7 +22,7 @@ const BtnWithLoading: FC<Props> = ({
 }): JSX.Element => {
   return (
     <button
-      className={`primary-btn w-full ${customClasses}`}
+      className={`primary-btn ${customClasses}`}
       type={type}
       onClick={onClick && onClick}
       id={id}

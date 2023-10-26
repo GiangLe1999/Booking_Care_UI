@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main_color: "#0071ba",
-        sub_color: "#bb8d09",
-        menu_bg_color: "#f5f5f5",
+        admin_main_color: "#0071ba",
+        admin_sub_color: "#bb8d09",
+        admin_menu_bg: "#f5f5f5",
         title_text: "#333333",
         normal_text: "#444444",
       },

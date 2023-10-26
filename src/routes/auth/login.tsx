@@ -10,10 +10,10 @@ import { loginHandler } from "../../service/user-service";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/slices/user-slice";
-import { redirect } from "react-router-dom";
 import { path } from "../../constants";
-import { useNavigate } from "react-router-dom";
-import { LoggedinUser } from "../../types";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { LoggedinUser } from "../../dtos/user.dto";
 
 const schema = Yup.object({
   email: Yup.string()
@@ -31,9 +31,10 @@ interface FormValues {
   password: string;
 }
 
-const Login: FC<Props> = (props): JSX.Element => {
+const Login: FC<Props> = (props): JSX.Element | null => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const isUser = useAuth();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,6 +65,8 @@ const Login: FC<Props> = (props): JSX.Element => {
 
     setIsLoading(false);
   };
+
+  if (isUser) return <Navigate to={path.HOME} replace={true} />;
 
   return (
     <div className="h-screen bg-[linear-gradient(135deg,#22c1c3_0%,#fdbb2d_100%)] grid place-items-center">
