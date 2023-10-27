@@ -1,4 +1,17 @@
 {
+  "rootheader": {
+    "speciality": "Medical Speciality",
+    "find-doctor": "Find doctors by specialty",
+    "health-facility": "Health Facilities",
+    "find-clinic": "Choose a hospital or clinic",
+    "doctor": "Doctors",
+    "choose-doctor": "Choose a good doctor",
+    "package-fee": "Checkup Package",
+    "check-health": "General health checkup",
+    "calendar": "Schedule",
+    "support": "Support",
+    "language": "Vietnamese"
+  },
   "common": {
     "add": "Add",
     "edit": "Edit",

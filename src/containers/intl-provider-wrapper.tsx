@@ -1,23 +1,25 @@
 import { FC, ReactNode } from "react";
 import { IntlProvider } from "react-intl";
 import LanguageUtils from "../utils/language-util";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const messages = LanguageUtils.getFlattenedMessages();
 
 interface Props {
   children: ReactNode;
-  language?: string;
 }
 
-const IntlProviderWrapper: FC<Props> = ({
-  children,
-  language,
-}): JSX.Element => {
+const IntlProviderWrapper: FC<Props> = ({ children }): JSX.Element => {
+  const currentLocale = useSelector(
+    (state: RootState) => state.language.language
+  );
+
   return (
     <IntlProvider
-      locale={language ? language : "vi"}
-      messages={messages[language ? language : "vi"]}
-      defaultLocale="vi"
+      locale={currentLocale ? currentLocale : "vi"}
+      messages={messages[currentLocale ? currentLocale : "vi"]}
+      defaultLocale={currentLocale}
     >
       {children}
     </IntlProvider>

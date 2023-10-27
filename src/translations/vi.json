@@ -1,4 +1,17 @@
 {
+  "rootheader": {
+    "speciality": "Chuyên khoa",
+    "find-doctor": "Tìm bác sĩ theo chuyên khoa",
+    "health-facility": "Cơ sở y tế",
+    "find-clinic": "Chọn bệnh viện phòng khám",
+    "doctor": "Bác sĩ",
+    "choose-doctor": "Chọn bác sĩ giỏi",
+    "package-fee": "Gói khám",
+    "check-health": "Khám sức khỏe tổng quát",
+    "calendar": "Lịch hẹn",
+    "support": "Hỗ trợ",
+    "language": "Tiếng Anh"
+  },
   "common": {
     "add": "Thêm",
     "edit": "Sửa",

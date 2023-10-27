@@ -4,6 +4,11 @@ export const path = {
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   MANAGE_USER: "/system/manage-user",
+  SPECIALITY: "/chuyen-khoa",
+  FACILITY: "/co-so-y-te/tat-ca",
+  DOCTOR: "/bac-si",
+  PACKAGE: "/dich-vu-y-te/kham-tong-quat",
+  SUPPORT: "/ho-tro",
 };
 
 export const languages = {

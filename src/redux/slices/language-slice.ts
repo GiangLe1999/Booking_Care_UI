@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface LanguageState {
   language: string;
@@ -10,13 +9,19 @@ const initialState: LanguageState = {
 };
 
 export const languageSlice = createSlice({
-  name: "counter",
+  name: "language",
   initialState,
   reducers: {
-    increment: (state) => {},
+    changeLanguage: (state) => {
+      if (state.language === "vi") {
+        state.language = "en";
+      } else {
+        state.language = "vi";
+      }
+    },
   },
 });
 
-export const { increment } = languageSlice.actions;
+export const { changeLanguage } = languageSlice.actions;
 
 export default languageSlice.reducer;

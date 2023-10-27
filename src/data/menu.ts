@@ -1,3 +1,5 @@
+import { path } from "../constants";
+
 export const adminMenuItems = [
   {
     //hệ thống
@@ -25,4 +27,11 @@ export const adminMenuItems = [
       // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
     ],
   },
+];
+
+export const rootMenuItems = [
+  { title: "speciality", subtitle: "find-doctor", link: path.SPECIALITY },
+  { title: "health-facility", subtitle: "find-clinic", link: path.FACILITY },
+  { title: "doctor", subtitle: "choose-doctor", link: path.DOCTOR },
+  { title: "package-fee", subtitle: "check-health", link: path.PACKAGE },
 ];
