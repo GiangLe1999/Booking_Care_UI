@@ -34,4 +34,9 @@ export type CreateNewUserInput = {
   firstName: string;
   lastName: string;
   address: string;
+  phoneNumber: string;
+  gender: string;
+  role: string;
 };
+
+export type EditUserInput = Omit<CreateNewUserInput, "password">;

@@ -53,7 +53,7 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
                 onClick={() => setOpenCreateModal(true)}
               />
             </div>
-            <AllUsersTable users={users} />
+            <AllUsersTable users={users} fetchAllUsers={fetchAllUsers} />
 
             <Modal
               open={openCreateModal}

@@ -1,26 +1,26 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormInput from "../form-input";
 import BtnWithLoading from "../btn-with-loading";
-import { createNewUser } from "../../service/user-service";
 import { toast } from "react-toastify";
 import FormSelect from "../form-select";
 import { genderOptions, roleOptions } from "../../data/select-options";
+import { FetchedUser } from "../../dtos/user.dto";
+import { editUser } from "../../service/user-service";
 
 interface Props {
-  setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
+  setOpenEditModal: Dispatch<SetStateAction<boolean>>;
   fetchAllUsers: () => Promise<void>;
+  editedUser: FetchedUser | undefined;
+  editedUserId: number | null;
 }
 
 const schema: any = Yup.object({
   email: Yup.string()
     .email("Your email is invalid")
     .required("Please enter your email"),
-  password: Yup.string()
-    .min(6, "Password must has at least 6 characters")
-    .required("Please enter your password"),
   firstName: Yup.string()
     .min(1, "First name must has at least 6 characters")
     .required("Please enter your first name"),
@@ -39,7 +39,6 @@ const schema: any = Yup.object({
 
 interface FormValues {
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
   address: string;
@@ -48,16 +47,17 @@ interface FormValues {
   phoneNumber: string;
 }
 
-const CreateUserForm: FC<Props> = ({
-  setOpenCreateModal,
+const EditUserForm: FC<Props> = ({
+  setOpenEditModal,
   fetchAllUsers,
+  editedUser,
+  editedUserId,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<FormValues>({
     defaultValues: {
       email: "",
-      password: "",
       firstName: "",
       lastName: "",
       address: "",
@@ -68,24 +68,38 @@ const CreateUserForm: FC<Props> = ({
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, setValue } = form;
 
   const { errors } = formState;
 
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true);
-    const res = await createNewUser(data);
+    if (editedUserId) {
+      const res = await editUser(editedUserId, data);
 
-    if (!res.ok) {
-      toast.error(res.error);
-    } else {
-      toast.success("Create user successfully!");
-      setOpenCreateModal(false);
-      fetchAllUsers();
+      if (!res.ok) {
+        toast.error(res.error);
+      } else {
+        toast.success("Edit user successfully!");
+        setOpenEditModal(false);
+        fetchAllUsers();
+      }
     }
 
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (editedUser) {
+      setValue("address", editedUser.address);
+      setValue("email", editedUser.email);
+      setValue("firstName", editedUser.firstName);
+      setValue("lastName", editedUser.lastName);
+      setValue("phoneNumber", editedUser.phoneNumber);
+      setValue("role", editedUser.roleId.toString());
+      setValue("gender", editedUser.gender.toString());
+    }
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -104,12 +118,12 @@ const CreateUserForm: FC<Props> = ({
           />
 
           <FormInput
-            id="password"
-            label="Password"
-            type={"password"}
-            register={register("password")}
-            errorMsg={errors.password?.message}
-            placeholder="Enter your password"
+            id="phoneNumber"
+            label="Phone number"
+            type="number"
+            register={register("phoneNumber")}
+            errorMsg={errors.phoneNumber?.message}
+            placeholder="Enter your phone number"
           />
         </div>
 
@@ -147,31 +161,20 @@ const CreateUserForm: FC<Props> = ({
           />
         </div>
 
-        <div className="grid grid-cols-2 items-center gap-5">
-          <FormInput
-            id="phoneNumber"
-            label="Phone number"
-            type="number"
-            register={register("phoneNumber")}
-            errorMsg={errors.phoneNumber?.message}
-            placeholder="Enter your phone number"
-          />
-
-          <FormInput
-            id="address"
-            label="Address"
-            register={register("address")}
-            errorMsg={errors.address?.message}
-            placeholder="Enter your address"
-          />
-        </div>
+        <FormInput
+          id="address"
+          label="Address"
+          register={register("address")}
+          errorMsg={errors.address?.message}
+          placeholder="Enter your address"
+        />
       </div>
 
       <div className="text-right p-6">
         <button
           className="cancel-btn"
           type="button"
-          onClick={() => setOpenCreateModal(false)}
+          onClick={() => setOpenEditModal(false)}
         >
           Cancel
         </button>
@@ -187,4 +190,4 @@ const CreateUserForm: FC<Props> = ({
   );
 };
 
-export default CreateUserForm;
+export default EditUserForm;

@@ -105,7 +105,7 @@ const Login: FC<Props> = (props): JSX.Element | null => {
           <BtnWithLoading
             content="LOGIN"
             isLoading={isLoading}
-            customClasses="mt-2 w-full login-btn"
+            customClasses="mt-2 w-full"
             type="submit"
           />
 

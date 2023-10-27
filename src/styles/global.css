@@ -55,16 +55,11 @@ body {
 
 /* Primary Button */
 .primary-btn,
-.login-btn,
 .admin-btn {
   background-image: linear-gradient(90deg, #22c1c3 2.34%, #fdbb2d 100.78%);
   transition: background-image 0.5s ease-in;
   @apply relative py-[10px] px-4 rounded-sm
     text-white font-bold;
-}
-
-.primary-btn {
-  background-image: linear-gradient(180deg, #f69c00 2.34%, #f1cd00 100.78%);
 }
 
 .admin-btn {
@@ -76,7 +71,6 @@ body {
 }
 
 .primary-btn:hover::before,
-.login-btn:hover::before,
 .admin-btn:hover::before {
   opacity: 1;
 }
@@ -88,13 +82,8 @@ body {
 }
 
 .primary-btn::before,
-.login-btn::before,
 .admin-btn::before {
   @apply bg-[linear-gradient(315deg,#22c1c3,#057fa8)] absolute content-[''] w-full h-full transition-opacity duration-500 ease-[ease-out] z-[2] opacity-0 left-0 top-0 rounded-[5px];
-}
-
-.primary-btn::before {
-  @apply bg-[linear-gradient(315deg,#f7c600,#f1dd00)];
 }
 
 .admin-btn::before {
