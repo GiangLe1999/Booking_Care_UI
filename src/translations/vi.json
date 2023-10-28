@@ -12,6 +12,54 @@
     "support": "Hỗ trợ",
     "language": "Tiếng Anh"
   },
+  "rootsidebar": {
+    "home": "Trang chủ",
+    "handbook": "Cẩm nang",
+    "co-operate": "Liên hệ hợp tác",
+    "company": "Sức khỏe doanh nghiệp",
+    "company-package": "Gói chuyển đổi số doanh nghiệp",
+    "hire": "Tuyển dụng",
+    "for-patient": "Dành cho bệnh nhân",
+    "for-doctor": "Dành cho bác sĩ",
+    "role": "Vai trò của BookingCare",
+    "contact": "Liên hệ",
+    "faq": "Câu hỏi thường gặp",
+    "terms": "Điều khoản sử dụng",
+    "complain": "Quy trình hỗ trợ giải quyết khiếu nại",
+    "procedure": "Quy chế hoạt động",
+    "about": "VỀ BOOKINGCARE",
+    "directory": "Danh bạ y tế",
+    "privacy": "Chính sách Bảo mật"
+  },
+  "homebanner": {
+    "title1": "NỀN TẢNG Y TẾ",
+    "title2": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN"
+  },
+  "homecategories": {
+    "specialized-checkup": "Khám Chuyên khoa",
+    "remote-checkup": "Khám bệnh từ xa",
+    "general-checkup": "Khám tổng quát",
+    "diagnosis": "Xét nghiệm Y học",
+    "mental": "Sức khỏe tinh thần",
+    "dentist": "Khám nha khoa",
+    "surgery-package": "Gói Phẫu thuật",
+    "diabetes": "Sống khỏe Tiểu đường",
+    "health-test": "Bài Test sức khỏe",
+    "near-facilities": "Y tế ở gần bạn"
+  },
+  "rootfooter": {
+    "company": "Công ty Cổ phần Công nghệ BookingCare",
+    "address": "Lô B4/D21, KĐT Cầu Giấy, P. Dịch Vọng Hậu, Q. Cầu Giấy, TP. Hà Nội",
+    "brc": "ĐKKD số: 0106790291. Sở KHĐT Hà Nội cấp ngày 16/03/2015",
+    "office-title": "Văn phòng tại TP Hồ Chí Minh",
+    "office-address": "Số 01, Hồ Bá Kiện, Phường 15, Quận 10",
+    "support-title": "Hỗ trợ khách hàng",
+    "support-mail": "support@bookingcare.vn (7h30 - 18h)",
+    "partner1-explain": "Bảo trợ chuyên mục nội dung “sức khỏe tinh thần”",
+    "partner2-title": "Hệ thống y khoa chuyên sâu quốc tế Bernard",
+    "partner2-explain": "Bảo trợ chuyên mục nội dung “y khoa chuyên sâu”",
+    "download": "Tải ứng dụng BookingCare cho điện thoại hoặc máy tính bảng:"
+  },
   "common": {
     "add": "Thêm",
     "edit": "Sửa",

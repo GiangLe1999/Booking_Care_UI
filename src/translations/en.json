@@ -12,6 +12,54 @@
     "support": "Support",
     "language": "Vietnamese"
   },
+  "rootsidebar": {
+    "home": "Home",
+    "handbook": "Handbook",
+    "co-operate": "Cooperate",
+    "company": "Company health",
+    "company-package": "Business package",
+    "hire": "Hiring",
+    "for-patient": "For patients",
+    "for-doctor": "For doctors",
+    "role": "BookingCare roles",
+    "contact": "Contact",
+    "faq": "Frequently asked questions",
+    "terms": "Terms of use",
+    "complain": "Complaint resolution process",
+    "procedure": "Operating procedures",
+    "about": "ABOUT BOOKINGCARE",
+    "directory": "Medical directory",
+    "privacy": "Privacy Policy"
+  },
+  "homebanner": {
+    "title1": "MEDICAL FOUNDATION",
+    "title2": "COMPREHENSIVE HEALTH CARE"
+  },
+  "rootfooter": {
+    "company": "BookingCare Technology Joint Stock Company",
+    "address": "Lot B4/D21, New Cau Giay Urban Area, Cau Giay District, Hanoi",
+    "brc": "BRC No: 0106790291. Issued by HAPI",
+    "office-title": "Office in Ho Chi Minh City",
+    "office-address": "No. 01, Ho Ba Kien Street, Ward 15, District 10",
+    "support-title": "Customer Support",
+    "support-mail": "support@bookingcare.vn (7:30 AM - 6:00 PM)",
+    "partner1-explain": "Sponsor for the content category 'Mental Health'",
+    "partner2-title": "Bernard International Specialized Medical System",
+    "partner2-explain": "Sponsor for the content category 'Specialized Medical'",
+    "download": "Download the BookingCare application for your phone or tablet:"
+  },
+  "homecategories": {
+    "specialized-checkup": "Specialized Checkup",
+    "remote-checkup": "Remote Checkup",
+    "general-checkup": "General Checkup",
+    "diagnosis": "Medical Diagnosis",
+    "mental": "Mental Health",
+    "dentist": "Dental Checkup",
+    "surgery-package": "Surgery Package",
+    "diabetes": "Living with Diabetes",
+    "health-test": "Health Test",
+    "near-facilities": "Nearby Healthcare"
+  },
   "common": {
     "add": "Add",
     "edit": "Edit",

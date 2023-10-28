@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
 
 /* Common classes */
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+html *::-webkit-scrollbar {
+  @apply w-[6px];
+}
+
+html *::-webkit-scrollbar-thumb {
+  @apply rounded bg-[#1618234d];
+}
+
+html *::-webkit-scrollbar-track {
+  @apply bg-[#00000000];
 }
 
 .page-container {
@@ -19,7 +31,7 @@ body {
 }
 
 .container {
-  @apply max-w-[1100px] mx-auto px-4;
+  @apply max-w-6xl mx-auto px-4;
 }
 
 .custom-shadow {
@@ -128,4 +140,49 @@ body {
 
 .react-responsive-modal-modal {
   @apply !p-0 !m-0;
+}
+
+/* Root sidebar */
+.root-sidebar .react-responsive-modal-modal {
+  @apply !h-screen;
+}
+
+.root-sidebar.react-responsive-modal-container {
+  @apply !text-left;
+}
+
+/* Home page */
+.home-page-bg {
+  width: 100%;
+  height: 100vh;
+  background: url("/public/assets/images/home-page/bookingcare-cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.search-section {
+  @apply py-[45px] min-h-[60vh];
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.title-shadow {
+  text-shadow: 1px 1px 1px #333;
+}
+
+.categories-section {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1)
+  );
+
+  @apply pt-[30px] pb-5;
+}
+
+.category-shadow {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
 }

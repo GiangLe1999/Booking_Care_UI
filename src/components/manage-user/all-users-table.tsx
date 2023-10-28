@@ -58,7 +58,7 @@ const AllUsersTable: FC<Props> = ({ users, fetchAllUsers }): JSX.Element => {
                     <div className="text-gray-400">{user.email}</div>
                   </div>
                 </th>
-                <td className="font-sans">{user.phoneNumber}</td>
+                <td>{user.phoneNumber}</td>
                 <td>{user.address}</td>
                 <td>
                   <div className="flex gap-2">
