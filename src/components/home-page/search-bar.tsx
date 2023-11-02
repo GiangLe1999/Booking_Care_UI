@@ -1,18 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+
 import {
   enSearchPlaceholders,
   viSearchPlaceholders,
 } from "../../data/search-placeholders";
+import { useGetLanguage } from "../../hooks/useGetLanguage";
 
 interface Props {}
 
 const Searchbar: FC<Props> = (props): JSX.Element => {
-  const currentLanguage = useSelector(
-    (state: RootState) => state.language.language
-  );
+  const currentLanguage = useGetLanguage();
 
   const [searchPlaceholderIndex, setSearchPlaceholderIndex] = useState(0);
 

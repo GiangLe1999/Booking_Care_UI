@@ -6,7 +6,7 @@ import FormInput from "../../components/form-input";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import BtnWithLoading from "../../components/btn-with-loading";
 import { FcGoogle } from "react-icons/fc";
-import { loginHandler } from "../../service/user-service";
+import { loginHandler } from "../../service/user.service";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/slices/user-slice";
@@ -14,6 +14,7 @@ import { path } from "../../constants";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { LoggedinUser } from "../../dtos/user.dto";
+import { FormattedMessage } from "react-intl";
 
 const schema = Yup.object({
   email: Yup.string()
@@ -53,6 +54,7 @@ const Login: FC<Props> = (props): JSX.Element | null => {
 
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true);
+
     const res = await loginHandler(data);
 
     if (!res.ok) {
@@ -71,7 +73,9 @@ const Login: FC<Props> = (props): JSX.Element | null => {
   return (
     <div className="h-screen bg-[linear-gradient(135deg,#22c1c3_0%,#fdbb2d_100%)] grid place-items-center">
       <div className="w-[400px] bg-white px-8 py-10 rounded-sm">
-        <h3 className="form-title">Login</h3>
+        <h3 className="form-title">
+          <FormattedMessage id="login-form.title" />
+        </h3>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <FormInput
             id="email"
@@ -79,16 +83,18 @@ const Login: FC<Props> = (props): JSX.Element | null => {
             register={register("email")}
             errorMsg={errors.email?.message}
             placeholder="Enter your email"
+            twoLang={false}
           />
 
           <div className="relative">
             <FormInput
               id="password"
-              label="Password"
+              label="login-form.password"
               type={showPassword ? "text" : "password"}
               register={register("password")}
               errorMsg={errors.password?.message}
               placeholder="Enter your password"
+              twoLang={true}
             />
             <div
               className="absolute right-3 top-9 cursor-pointer"
@@ -103,14 +109,14 @@ const Login: FC<Props> = (props): JSX.Element | null => {
           </div>
 
           <BtnWithLoading
-            content="LOGIN"
+            content="login"
             isLoading={isLoading}
-            customClasses="mt-2 w-full"
+            customClasses="mt-2 w-full uppercase"
             type="submit"
           />
 
           <p className="mt-8 mb-2 text-center text-sm text-normal_text">
-            Or join with
+            <FormattedMessage id="login-form.join-with" />
           </p>
           <div className="flex items-center justify-center gap-x-2">
             <FcGoogle size={30} className="cursor-pointer" />
@@ -122,8 +128,10 @@ const Login: FC<Props> = (props): JSX.Element | null => {
           </div>
 
           <p className="text-center mt-8 text-sm text-normal_text">
-            Forgot your password?
-            <span className="form-link">Click here</span>
+            <FormattedMessage id="login-form.forgot-password" />
+            <span className="form-link">
+              <FormattedMessage id="button.click-here" />
+            </span>
           </p>
         </form>
       </div>

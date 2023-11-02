@@ -4,6 +4,7 @@ export const path = {
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   MANAGE_USER: "/system/manage-user",
+  MANAGE_DOCTOR: "/system/manage-doctor",
   SPECIALITY: "/chuyen-khoa",
   FACILITY: "/co-so-y-te/tat-ca",
   DOCTOR: "/bac-si",
@@ -32,6 +33,7 @@ export const path = {
   NEAR_FACILITIES: "/y-te-gan-ban",
   DIRECTORY: "/danh-ba-y-te",
   PRIVACY: "/chinh-sach-bao-mat",
+  APP: "/app",
 };
 
 export const languages = {

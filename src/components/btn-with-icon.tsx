@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IconType } from "react-icons";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -53,7 +54,7 @@ const BtnWithIcon: FC<Props> = ({
     >
       <span className="flex items-center justify-center gap-x-1">
         {icon && icon({ size: iconSize, className: iconCustomClasses })}
-        {content}
+        <FormattedMessage id={`button.${content}`} />
 
         {iconBehind &&
           iconBehind({ size: iconSize, className: iconCustomClasses })}

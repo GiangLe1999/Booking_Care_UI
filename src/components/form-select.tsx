@@ -1,13 +1,16 @@
 import { FC } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { AiOutlineWarning } from "react-icons/ai";
+import { FormattedMessage } from "react-intl";
+import { useGetLanguage } from "../hooks/useGetLanguage";
 
 interface Props {
   id: string;
   label: string;
   register: UseFormRegisterReturn<string>;
   errorMsg?: string | undefined;
-  options: { text: string; value: any }[];
+  options: { textVi: string; textEn: string; value: any }[];
+  twoLang: boolean;
 }
 
 const FormSelect: FC<Props> = ({
@@ -16,11 +19,14 @@ const FormSelect: FC<Props> = ({
   register,
   errorMsg,
   options,
+  twoLang,
 }): JSX.Element => {
+  const currentLanguage = useGetLanguage();
+
   return (
     <div className="mb-4">
       <label htmlFor={id} className="text-sm font-bold text-normal_text">
-        {label}
+        {twoLang ? <FormattedMessage id={label} /> : label}
       </label>
       <select
         id={id}
@@ -29,7 +35,7 @@ const FormSelect: FC<Props> = ({
       >
         {options.map((opt, index) => (
           <option key={index} value={opt.value}>
-            {opt.text}
+            {currentLanguage === "vi" ? opt.textVi : opt.textEn}
           </option>
         ))}
       </select>

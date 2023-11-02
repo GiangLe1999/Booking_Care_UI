@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider as StateProvider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./routes/home";
@@ -14,6 +14,7 @@ import SystemLayout from "./containers/system-layout";
 import ManageUser from "./routes/manage-user";
 import IntlProviderWrapper from "./containers/intl-provider-wrapper";
 import Login from "./routes/auth/login";
+import ManageDoctor from "./routes/manage-doctor";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/system",
     element: <SystemLayout />,
-    children: [{ path: "manage-user", element: <ManageUser /> }],
+    children: [
+      { path: "manage-user", element: <ManageUser /> },
+      { path: "manage-doctor", element: <ManageDoctor /> },
+    ],
   },
 ]);
 

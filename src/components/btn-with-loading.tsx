@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { ImSpinner } from "react-icons/im";
+import { FormattedMessage } from "react-intl";
 
 interface Props {
   isLoading: boolean;
@@ -22,7 +23,9 @@ const BtnWithLoading: FC<Props> = ({
 }): JSX.Element => {
   return (
     <button
-      className={`primary-btn ${customClasses}`}
+      className={`primary-btn ${customClasses} ${
+        disabled && "cursor-not-allowed"
+      }`}
       type={type}
       onClick={onClick && onClick}
       id={id}
@@ -34,7 +37,7 @@ const BtnWithLoading: FC<Props> = ({
             <ImSpinner className="animate-spin" size={18} /> Processing
           </>
         ) : (
-          <>{content}</>
+          <FormattedMessage id={`button.${content}`} />
         )}
       </span>
     </button>

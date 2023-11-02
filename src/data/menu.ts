@@ -1,30 +1,59 @@
 import { path } from "../constants";
 
-export const adminMenuItems = [
+export const adminMenuItems: {
+  name: string;
+  menus: {
+    name: string;
+    link: string;
+    subMenus?: { name: string; link: string }[];
+  }[];
+}[] = [
   {
-    //hệ thống
-    name: "menu.system.header",
+    name: "adminheader.admin.user",
     menus: [
       {
-        name: "menu.system.system-administrator.header",
-        link: "/system",
-        subMenus: [
-          {
-            name: "menu.system.system-administrator.user-manage",
-            link: "/system/manage-user",
-          },
-          {
-            name: "menu.system.system-administrator.product-manage",
-            link: "/system/manage-product",
-          },
-          {
-            name: "menu.system.system-administrator.register-package-group-or-account",
-            link: "/system/register-package-group-or-account",
-          },
-        ],
+        name: "manage-general-user",
+        link: path.MANAGE_USER,
+      },
+      {
+        name: "manage-doctor",
+        link: path.MANAGE_DOCTOR,
       },
 
-      // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
+      {
+        name: "manage-admin",
+        link: "/system/system-parameter",
+      },
+    ],
+  },
+
+  {
+    name: "adminheader.admin.clinic",
+    menus: [
+      {
+        name: "manage-clinic",
+        link: "/system/system-parameter",
+      },
+    ],
+  },
+
+  {
+    name: "adminheader.admin.specialty",
+    menus: [
+      {
+        name: "manage-specialty",
+        link: "/system/system-parameter",
+      },
+    ],
+  },
+
+  {
+    name: "adminheader.admin.handbook",
+    menus: [
+      {
+        name: "manage-handbook",
+        link: "/system/system-parameter",
+      },
     ],
   },
 ];

@@ -11,11 +11,11 @@ export interface FetchedUser {
   firstName: string;
   lastName: string;
   address: string;
-  gender: number;
-  image: string;
-  roleId: number;
+  gender: string;
+  image: any;
+  roleId: string;
   phoneNumber: string;
-  positionId: number;
+  positionId: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -36,7 +36,9 @@ export type CreateNewUserInput = {
   address: string;
   phoneNumber: string;
   gender: string;
-  role: string;
+  roleId: string;
+  positionId: string;
+  avatar?: string;
 };
 
-export type EditUserInput = Omit<CreateNewUserInput, "password">;
+export type EditUserInput = Omit<CreateNewUserInput, "password" | "email">;

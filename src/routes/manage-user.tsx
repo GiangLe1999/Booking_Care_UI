@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import ProtectedPage from "../containers/protected-page";
 import AllUsersTable from "../components/manage-user/all-users-table";
-import { getAllUsers } from "../service/user-service";
+import { getAllUsers } from "../service/user.service";
 import { GetAllUsersOutput } from "../dtos/user.dto";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -10,6 +10,8 @@ import { FaPlus } from "react-icons/fa";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import CreateUserForm from "../components/manage-user/create-user-form";
+import TextEditor from "../components/text-editor";
+import { FormattedMessage } from "react-intl";
 
 interface Props {}
 
@@ -21,7 +23,7 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
   const fetchAllUsers = async () => {
     setIsLoading(true);
     const res = (await getAllUsers()) as GetAllUsersOutput;
-    setUsers(res.users);
+    setUsers(res.users?.reverse());
     setIsLoading(false);
   };
 
@@ -40,12 +42,12 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
           </div>
         ) : (
           <>
-            <h1 className="text-center font-bold text-admin_main_color text-2xl">
-              MANAGE USER
+            <h1 className="admin-page-title">
+              <FormattedMessage id="adminheader.admin.manage-general-user" />
             </h1>
             <div className="text-right mt-3">
               <BtnWithIcon
-                content="Add new user"
+                content="add-user"
                 icon={FaPlus}
                 iconSize={13}
                 iconCustomClasses="-mt-[1px]"

@@ -3,6 +3,7 @@
 import { ChangeEvent, FC } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { AiOutlineWarning } from "react-icons/ai";
+import { FormattedMessage } from "react-intl";
 
 interface Props {
   id: string;
@@ -16,6 +17,7 @@ interface Props {
   disabled?: boolean;
   value?: any;
   readOnly?: boolean;
+  twoLang: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -32,13 +34,14 @@ const FormInput: FC<Props> = ({
   value,
   readOnly,
   onChange,
+  twoLang,
 }): JSX.Element => {
   let Component: any = "input";
   if (textarea) Component = "textarea";
   return (
     <div className="mb-4">
       <label htmlFor={id} className="form-input-label">
-        {label}
+        {twoLang ? <FormattedMessage id={label} /> : label}
       </label>
       <Component
         id={id}

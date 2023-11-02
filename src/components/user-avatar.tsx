@@ -9,7 +9,7 @@ const UserAvatar: FC<Props> = ({ src, alt }): JSX.Element => {
   return (
     <img
       className="h-full w-full rounded-full object-cover object-center"
-      src={src}
+      src={src ? src : "/assets/images/default-avatar.png"}
       alt={alt}
     />
   );

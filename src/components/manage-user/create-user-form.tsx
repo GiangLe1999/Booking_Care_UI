@@ -1,13 +1,20 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormInput from "../form-input";
 import BtnWithLoading from "../btn-with-loading";
-import { createNewUser } from "../../service/user-service";
+import { createNewUser } from "../../service/user.service";
 import { toast } from "react-toastify";
 import FormSelect from "../form-select";
-import { genderOptions, roleOptions } from "../../data/select-options";
+import {
+  genderOptions,
+  positionOptions,
+  roleOptions,
+} from "../../data/select-options";
+import { FormattedMessage } from "react-intl";
+import { blobToBase64 } from "../../utils/blobToBase64";
+import UploadImageInput from "./upload-image-input";
 
 interface Props {
   setOpenCreateModal: Dispatch<SetStateAction<boolean>>;
@@ -22,10 +29,10 @@ const schema: any = Yup.object({
     .min(6, "Password must has at least 6 characters")
     .required("Please enter your password"),
   firstName: Yup.string()
-    .min(1, "First name must has at least 6 characters")
+    .min(1, "First name must has at least 1 characters")
     .required("Please enter your first name"),
   lastName: Yup.string()
-    .min(1, "Last name must has at least 6 characters")
+    .min(1, "Last name must has at least 1 characters")
     .required("Please enter your last name"),
   phoneNumber: Yup.string()
     .required("Please enter your phone number")
@@ -44,7 +51,8 @@ interface FormValues {
   lastName: string;
   address: string;
   gender: string;
-  role: string;
+  roleId: string;
+  positionId: string;
   phoneNumber: string;
 }
 
@@ -53,6 +61,7 @@ const CreateUserForm: FC<Props> = ({
   fetchAllUsers,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
+  const [avatar, setAvatar] = useState<any>(null);
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -61,8 +70,9 @@ const CreateUserForm: FC<Props> = ({
       firstName: "",
       lastName: "",
       address: "",
-      gender: "0",
-      role: "1",
+      gender: "M",
+      roleId: "R1",
+      positionId: "",
       phoneNumber: "",
     },
     resolver: yupResolver(schema),
@@ -72,9 +82,20 @@ const CreateUserForm: FC<Props> = ({
 
   const { errors } = formState;
 
+  const uploadAvatarHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files?.length) {
+      return;
+    }
+
+    const file = files[0];
+    const base64: any = await blobToBase64(file);
+    setAvatar(base64.toString());
+  };
+
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true);
-    const res = await createNewUser(data);
+    const res = await createNewUser({ ...data, avatar });
 
     if (!res.ok) {
       toast.error(res.error);
@@ -90,7 +111,7 @@ const CreateUserForm: FC<Props> = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h3 className="bg-admin_main_color text-white py-4 pl-6 text-xl font-bold">
-        Create a new user
+        <FormattedMessage id="create-user-form.title" />
       </h3>
 
       <div className="py-4 px-6 border-b">
@@ -101,33 +122,37 @@ const CreateUserForm: FC<Props> = ({
             register={register("email")}
             errorMsg={errors.email?.message}
             placeholder="Enter your email"
+            twoLang={false}
           />
 
           <FormInput
             id="password"
-            label="Password"
+            label="create-user-form.password"
             type={"password"}
             register={register("password")}
             errorMsg={errors.password?.message}
             placeholder="Enter your password"
+            twoLang={true}
           />
         </div>
 
         <div className="grid grid-cols-2 items-center gap-5">
           <FormInput
             id="firstName"
-            label="First Name"
+            label="create-user-form.first-name"
             register={register("firstName")}
             errorMsg={errors.firstName?.message}
             placeholder="Enter your first name"
+            twoLang={true}
           />
 
           <FormInput
             id="lastName"
-            label="Last Name"
+            label="create-user-form.last-name"
             register={register("lastName")}
             errorMsg={errors.lastName?.message}
             placeholder="Enter your last name"
+            twoLang={true}
           />
         </div>
 
@@ -135,36 +160,53 @@ const CreateUserForm: FC<Props> = ({
           <FormSelect
             options={genderOptions}
             id="gender"
-            label="Gender"
+            label="create-user-form.gender"
+            twoLang={true}
             register={register("gender")}
           />
 
           <FormSelect
             options={roleOptions}
-            id="role"
-            label="Role"
-            register={register("role")}
+            id="roleId"
+            label="create-user-form.role"
+            twoLang={true}
+            register={register("roleId")}
           />
         </div>
 
         <div className="grid grid-cols-2 items-center gap-5">
           <FormInput
             id="phoneNumber"
-            label="Phone number"
             type="number"
+            label="create-user-form.phone"
             register={register("phoneNumber")}
             errorMsg={errors.phoneNumber?.message}
             placeholder="Enter your phone number"
+            twoLang={true}
           />
 
-          <FormInput
-            id="address"
-            label="Address"
-            register={register("address")}
-            errorMsg={errors.address?.message}
-            placeholder="Enter your address"
+          <FormSelect
+            options={positionOptions}
+            id="positionId"
+            label="create-user-form.position"
+            twoLang={true}
+            register={register("positionId")}
           />
         </div>
+
+        <FormInput
+          id="address"
+          label="create-user-form.address"
+          register={register("address")}
+          errorMsg={errors.address?.message}
+          placeholder="Enter your address"
+          twoLang={true}
+        />
+
+        <UploadImageInput
+          previewImage={avatar}
+          imageHandler={uploadAvatarHandler}
+        />
       </div>
 
       <div className="text-right p-6">
@@ -173,11 +215,11 @@ const CreateUserForm: FC<Props> = ({
           type="button"
           onClick={() => setOpenCreateModal(false)}
         >
-          Cancel
+          <FormattedMessage id="button.cancel" />
         </button>
 
         <BtnWithLoading
-          content="Confirm"
+          content="confirm"
           isLoading={isLoading}
           customClasses="admin-btn"
           type="submit"
