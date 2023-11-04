@@ -11,7 +11,14 @@ module.exports = {
         title_text: "#333333",
         normal_text: "#444444",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "120ch",
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

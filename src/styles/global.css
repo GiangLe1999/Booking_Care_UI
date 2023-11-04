@@ -47,6 +47,10 @@ html *::-webkit-scrollbar-track {
   text-fill-color: transparent;
 }
 
+.section-title {
+  @apply font-bold text-2xl;
+}
+
 /* Admin */
 .item-level-1:hover .items-block-level-3 {
   visibility: hidden;
@@ -72,7 +76,11 @@ html *::-webkit-scrollbar-track {
 /* Primary Button */
 .primary-btn,
 .admin-btn {
-  background-image: linear-gradient(90deg, #22c1c3 2.34%, #fdbb2d 100.78%);
+  background-image: linear-gradient(
+    90deg,
+    #22c1c3 2.34%,
+    rgb(12, 119, 207) 100.78%
+  );
   transition: background-image 0.5s ease-in;
   @apply relative py-[10px] px-4 rounded-sm
     text-white font-bold;
@@ -146,6 +154,23 @@ html *::-webkit-scrollbar-track {
   @apply !p-0 !m-0;
 }
 
+@keyframes customEnterOverlayAnimation {
+  0% {
+    transform: opacity(0);
+  }
+  100% {
+    transform: opacity(1);
+  }
+}
+@keyframes customLeaveOverlayAnimation {
+  0% {
+    transform: opacity(1);
+  }
+  100% {
+    transform: opacity(0);
+  }
+}
+
 /* Root sidebar */
 .root-sidebar .react-responsive-modal-modal {
   @apply !h-screen;
@@ -153,6 +178,57 @@ html *::-webkit-scrollbar-track {
 
 .root-sidebar.react-responsive-modal-container {
   @apply !text-left;
+}
+
+@keyframes customRootSidebarEnter {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes customRootSidebarLeave {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* Right Sidebar */
+.right-sidebar .react-responsive-modal-modal {
+  @apply !h-screen;
+}
+
+.right-sidebar.react-responsive-modal-container {
+  @apply !text-right;
+}
+
+@keyframes customRightSidebarEnter {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes customRightSidebarLeave {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 /* Home page */
@@ -191,6 +267,41 @@ html *::-webkit-scrollbar-track {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.has-bg-section {
-  @apply py-10 px-4 bg-section_bg;
+.has-bg-section-1 {
+  background: url("/public/assets/images/home-page/section-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  @apply py-10 px-4;
+}
+
+/* Top Doctors Swiper */
+
+.top-doctors-swiper {
+  @apply !px-16;
+}
+
+.top-doctors-swiper .swiper-button-prev,
+.top-doctors-swiper .swiper-button-next {
+  @apply bg-white w-10 h-10 rounded-lg border border-[#34929e] -translate-y-[23px];
+  box-shadow: rgb(201, 236, 240) 2px 2px 5px;
+}
+
+.top-doctors-swiper .swiper-button-next::after,
+.swiper-button-prev::after {
+  @apply text-[#34929e] scale-[0.4];
+}
+
+/* Doctor page */
+.doctor-description {
+  @apply text-[13px] text-[#555555];
+}
+
+.doctor-description h1 {
+  @apply font-semibold text-[27px] text-title_text mb-2;
+}
+
+/* HTML Content */
+.doctor-content {
+  @apply prose prose-headings:text-title_text prose-h2:text-base prose-h3:text-base container text-sm prose-img:mx-auto;
 }

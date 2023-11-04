@@ -15,12 +15,16 @@ import ManageUser from "./routes/manage-user";
 import IntlProviderWrapper from "./containers/intl-provider-wrapper";
 import Login from "./routes/auth/login";
 import ManageDoctor from "./routes/manage-doctor";
+import SubLayout from "./containers/sub-layout";
+import Doctor from "./routes/doctor";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Home /> },
+      { path: "user/:id", element: <Doctor /> },
+    ],
   },
 
   {
@@ -42,14 +46,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <StateProvider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <IntlProviderWrapper>
-          <RouterProvider router={router} />
-          <ToastContainer />
-        </IntlProviderWrapper>
-      </PersistGate>
-    </StateProvider>
-  </React.StrictMode>
+  <StateProvider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <IntlProviderWrapper>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </IntlProviderWrapper>
+    </PersistGate>
+  </StateProvider>
 );

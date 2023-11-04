@@ -18,7 +18,7 @@ const RootSidebar: FC<Props> = (props): JSX.Element => {
                 <li key={5}>
                   <Link
                     to={item.link}
-                    className="text-main_color py-3 px-4 block border-b"
+                    className="text-main_color py-3 px-4 block border-b border-[#eeeeee]"
                   >
                     <FormattedMessage id={`rootsidebar.${item.title}`} />
                   </Link>

@@ -4,26 +4,24 @@ import { Editor as TinyMCEEditor } from "tinymce";
 interface Props {
   initialValue?: string;
   setContent: Dispatch<SetStateAction<string>>;
+  value: string;
 }
 
-const SmallTextEditor: FC<Props> = ({
-  initialValue = "",
-  setContent,
-}): JSX.Element => {
+const SmallTextEditor: FC<Props> = ({ setContent, value }): JSX.Element => {
   const editorRef = useRef<TinyMCEEditor | null>(null);
 
   return (
     <Editor
       apiKey={process.env.REACT_APP_TEXT_EDITOR_KEY}
-      initialValue={initialValue}
       init={{ menubar: false }}
       onInit={(evt, editor) => {
         if (editorRef) editorRef.current = editor;
       }}
-      onChange={() => {
+      onEditorChange={() => {
         if (editorRef.current?.getContent())
           setContent(editorRef.current?.getContent());
       }}
+      value={value}
     />
   );
 };

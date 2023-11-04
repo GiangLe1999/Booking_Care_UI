@@ -1,19 +1,19 @@
 import { FC, ReactNode } from "react";
-import RootHeader from "../components/layout/root-header";
 import RootFooter from "../components/layout/root-footer";
+import SubHeader from "../components/layout/sub-header";
 
 interface Props {
   children: ReactNode;
 }
 
-const RootLayout: FC<Props> = ({ children }): JSX.Element => {
+const SubLayout: FC<Props> = ({ children }): JSX.Element => {
   return (
-    <div>
-      <RootHeader />
+    <>
+      <SubHeader />
       {children}
       <RootFooter />
-    </div>
+    </>
   );
 };
 
-export default RootLayout;
+export default SubLayout;

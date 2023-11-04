@@ -3,14 +3,11 @@ import { Editor as TinyMCEEditor } from "tinymce";
 import { Dispatch, FC, SetStateAction, useRef } from "react";
 
 interface Props {
-  initialValue?: string;
   setContent: Dispatch<SetStateAction<string>>;
+  value: string;
 }
 
-const TextEditor: FC<Props> = ({
-  initialValue = "",
-  setContent,
-}): JSX.Element => {
+const TextEditor: FC<Props> = ({ setContent, value }): JSX.Element => {
   const editorRef = useRef<TinyMCEEditor | null>(null);
 
   return (
@@ -32,11 +29,11 @@ const TextEditor: FC<Props> = ({
         onInit={(evt, editor) => {
           if (editorRef) editorRef.current = editor;
         }}
-        initialValue={initialValue}
-        onChange={() => {
+        onEditorChange={() => {
           if (editorRef.current?.getContent())
             setContent(editorRef.current?.getContent());
         }}
+        value={value}
       />
     </>
   );

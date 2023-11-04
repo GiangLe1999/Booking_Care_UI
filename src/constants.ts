@@ -34,6 +34,7 @@ export const path = {
   DIRECTORY: "/danh-ba-y-te",
   PRIVACY: "/chinh-sach-bao-mat",
   APP: "/app",
+  CALENDAR: "/lich-hen",
 };
 
 export const languages = {

@@ -3,12 +3,16 @@ import StyledImage from "../styled-image";
 import { Link } from "react-router-dom";
 
 interface Props {
+  containerWrapperClasses?: string;
   imgWrapperClasses: string;
 }
 
-const DownloadAppBtns: FC<Props> = ({ imgWrapperClasses }): JSX.Element => {
+const DownloadAppBtns: FC<Props> = ({
+  imgWrapperClasses,
+  containerWrapperClasses,
+}): JSX.Element => {
   return (
-    <div className="flex items-center gap-4">
+    <div className={`flex items-center gap-4 ${containerWrapperClasses}`}>
       <Link to="/">
         <StyledImage
           wrapperClasses={imgWrapperClasses}

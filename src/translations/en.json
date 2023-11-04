@@ -96,7 +96,8 @@
     "login": "Login",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "click-here": "Click here"
+    "click-here": "Click here",
+    "see-more": "See more"
   },
   "login-form": {
     "title": "Login",
@@ -137,5 +138,12 @@
     "choose-doctor": "Choose doctor",
     "introduction": "Introductory information",
     "detail": "Detail information"
+  },
+  "rightsidebar": {
+    "calendar": "Scheduled appointment",
+    "download": "Download App"
+  },
+  "homesections": {
+    "top-doctors": "Outstanding doctors"
   }
 }

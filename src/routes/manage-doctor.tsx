@@ -6,8 +6,13 @@ import TextEditor from "../components/text-editor";
 
 import Select from "react-select";
 import BtnWithLoading from "../components/btn-with-loading";
-import { getAllDoctors, saveDoctorInfo } from "../service/doctor.service";
-import { FetchedDoctors } from "../dtos/doctor.dto";
+import {
+  editDoctorInfo,
+  getAllDoctors,
+  getDoctor,
+  saveDoctorInfo,
+} from "../service/doctor.service";
+import { DetailedDoctor } from "../dtos/doctor.dto";
 import { toast } from "react-toastify";
 
 interface Props {}
@@ -17,17 +22,16 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
   const [doctors, setDoctors] = useState<{ label: string; value: string }[]>(
     []
   );
-  const [rawDoctors, setRawDoctors] = useState<FetchedDoctors[]>([]);
   const [selectedOption, setSelectedOption] = useState({
     value: "",
     label: "",
   });
+
+  const [currentDoctor, setCurrentDoctor] = useState<DetailedDoctor>();
+  const [isLoadingCurrentDoctor, setIsLoadingCurrentDoctor] = useState(false);
+
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
-
-  const currentDoctorInfo = rawDoctors.find(
-    (doctor) => Number(selectedOption.value) === doctor.id
-  );
 
   const submitHandler = async () => {
     if (!selectedOption.value) {
@@ -36,18 +40,41 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
     }
 
     setIsLoading(true);
-    const res = await saveDoctorInfo({
-      doctorId: Number(selectedOption.value),
-      content,
-      description,
-    });
 
-    if (res.ok) {
-      toast.success("Lưu thông tin bác sĩ thành công");
-    }
+    if (!currentDoctor?.Content.content) {
+      const res = await saveDoctorInfo({
+        doctorId: Number(selectedOption.value),
+        content,
+        description,
+      });
 
-    if (res.error) {
-      toast.error(res.error);
+      if (res.ok) {
+        toast.success("Tạo mới thông tin bác sĩ thành công");
+        setContent("");
+        setDescription("");
+        await fetchCurrentDoctor();
+      }
+
+      if (res.error) {
+        toast.error(res.error);
+      }
+    } else {
+      const res = await editDoctorInfo({
+        doctorId: Number(selectedOption.value),
+        content,
+        description,
+      });
+
+      if (res.ok) {
+        toast.success("Sửa thông tin bác sĩ thành công");
+        setContent("");
+        setDescription("");
+        await fetchCurrentDoctor();
+      }
+
+      if (res.error) {
+        toast.error(res.error);
+      }
     }
 
     setIsLoading(false);
@@ -57,7 +84,6 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
     const res = await getAllDoctors();
 
     if (res.doctors) {
-      setRawDoctors(res.doctors);
       const formattedDoctors = res.doctors.map((doctor) => ({
         label: `${doctor.firstName} ${doctor.lastName}`,
         value: doctor.id.toString(),
@@ -70,6 +96,29 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
   useEffect(() => {
     fetchDoctors();
   }, []);
+
+  const fetchCurrentDoctor = async () => {
+    setIsLoadingCurrentDoctor(true);
+    const res = await getDoctor(selectedOption.value);
+    if (res.doctor?.Content.content) {
+      setContent(res.doctor?.Content.content);
+    } else {
+      setContent("");
+    }
+    if (res.doctor?.Content.description) {
+      setDescription(res.doctor?.Content.description);
+    } else {
+      setDescription("");
+    }
+    setCurrentDoctor(res.doctor);
+    setIsLoadingCurrentDoctor(false);
+  };
+
+  useEffect(() => {
+    fetchCurrentDoctor();
+  }, [selectedOption.value]);
+
+  console.log(description);
 
   return (
     <ProtectedPage>
@@ -88,6 +137,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
               className="h-fit !outline-none"
               onChange={setSelectedOption as any}
               defaultValue={selectedOption}
+              isDisabled={isLoadingCurrentDoctor}
             />
           </div>
 
@@ -95,7 +145,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
             <label className="form-input-label mb-2 block">
               <FormattedMessage id="manage-doctor.introduction" />
             </label>
-            <SmallTextEditor setContent={setDescription} />
+            <SmallTextEditor setContent={setDescription} value={description} />
           </div>
         </div>
 
@@ -103,7 +153,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
           <label className="form-input-label mb-2 block">
             <FormattedMessage id="manage-doctor.detail" />
           </label>
-          <TextEditor setContent={setContent} />
+          <TextEditor setContent={setContent} value={content} />
         </div>
 
         <div className="text-right mt-6">

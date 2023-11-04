@@ -14,16 +14,11 @@ import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import RootSidebar from "./root-sidebar";
 import Logo from "../logo";
+import HeaderRightSection from "./header-right-section";
 
 interface Props {}
 
 const RootHeader: FC<Props> = (props): JSX.Element => {
-  const dispatch = useDispatch();
-
-  const changeLanguageHandler = () => {
-    dispatch(changeLanguage());
-  };
-
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
@@ -55,31 +50,7 @@ const RootHeader: FC<Props> = (props): JSX.Element => {
             ))}
           </ul>
 
-          <div className="flex items-center gap-6 text-main_color">
-            <div className="grid place-items-center">
-              <IoMdTime size={21} />
-              <span className="text-xs font-bold">
-                <FormattedMessage id="rootheader.calendar" />
-              </span>
-            </div>
-
-            <Link to={path.SUPPORT} className="grid place-items-center">
-              <MdSupportAgent size={21} />
-              <span className="text-xs font-bold">
-                <FormattedMessage id="rootheader.support" />
-              </span>
-            </Link>
-
-            <div
-              className="grid place-items-center cursor-pointer"
-              onClick={changeLanguageHandler}
-            >
-              <IoEarth size={18} className="my-[2px]" />
-              <span className="text-xs font-bold">
-                <FormattedMessage id="rootheader.language" />
-              </span>
-            </div>
-          </div>
+          <HeaderRightSection color="main" />
         </div>
       </div>
 
@@ -87,7 +58,13 @@ const RootHeader: FC<Props> = (props): JSX.Element => {
         <Modal
           open={showSidebar}
           onClose={() => setShowSidebar(false)}
-          classNames={{ modalContainer: "root-sidebar" }}
+          classNames={{
+            modalContainer: "root-sidebar",
+            overlayAnimationIn: "customEnterOverlayAnimation",
+            overlayAnimationOut: "customLeaveOverlayAnimation",
+            modalAnimationIn: "customRootSidebarEnter",
+            modalAnimationOut: "customRootSidebarLeave",
+          }}
         >
           <RootSidebar />
         </Modal>

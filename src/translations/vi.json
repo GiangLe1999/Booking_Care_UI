@@ -99,7 +99,8 @@
     "login": "Đăng nhập",
     "confirm": "Xác nhận",
     "cancel": "Hủy bỏ",
-    "click-here": "Bấm vào đây"
+    "click-here": "Bấm vào đây",
+    "see-more": "Xem thêm"
   },
   "login-form": {
     "title": "Đăng Nhập",
@@ -140,5 +141,12 @@
     "choose-doctor": "Chọn bác sĩ",
     "introduction": "Thông tin giới thiệu",
     "detail": "Thông tin chi tiết"
+  },
+  "rightsidebar": {
+    "calendar": "Lịch hẹn đã đặt",
+    "download": "Tải App"
+  },
+  "homesections": {
+    "top-doctors": "Bác sĩ nổi bật"
   }
 }
