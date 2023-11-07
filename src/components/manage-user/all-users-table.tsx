@@ -64,12 +64,14 @@ const AllUsersTable: FC<Props> = ({ users, fetchAllUsers }): JSX.Element => {
                     <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
                   </div>
                   <div className="text-sm">
-                    <div className="font-medium text-gray-700">{`${user.firstName} ${user.lastName}`}</div>
+                    <div className="font-medium text-gray-700 line-clamp-1">{`${user.firstName} ${user.lastName}`}</div>
                     <div className="text-gray-400">{user.email}</div>
                   </div>
                 </th>
                 <td>{user.phoneNumber}</td>
-                <td>{user.address}</td>
+                <td>
+                  <span className="line-clamp-1">{user.address}</span>
+                </td>
                 <td>
                   <div className="flex gap-2">
                     {user.roleId === "R1" ? (

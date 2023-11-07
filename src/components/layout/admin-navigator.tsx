@@ -1,16 +1,25 @@
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
-import { adminMenuItems } from "../../data/menu";
+import { adminMenuItems, doctorMenuItems } from "../../data/menu";
 import { Link, useLocation } from "react-router-dom";
+import { useGetUser } from "../../hooks/useGetUser";
 
 interface Props {}
 
 const AdminNavigator: FC<Props> = (props): JSX.Element => {
   const { pathname } = useLocation();
+  const user = useGetUser();
+
+  const menuItems =
+    user?.roleId === "R1"
+      ? adminMenuItems
+      : user?.roleId === "R2"
+      ? doctorMenuItems
+      : [];
 
   return (
     <div className="flex items-center">
-      {adminMenuItems.map((itemLv1, indexLv1) => (
+      {menuItems.map((itemLv1, indexLv1) => (
         <div
           key={indexLv1}
           className="px-4 py-3 cursor-pointer relative hover:bg-sky-700 transition group/lv1 item-level-1 border-r border-white"

@@ -19,6 +19,7 @@ interface Props {
   readOnly?: boolean;
   twoLang: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  inputCustomClasses?: string;
 }
 
 const FormInput: FC<Props> = ({
@@ -35,6 +36,7 @@ const FormInput: FC<Props> = ({
   readOnly,
   onChange,
   twoLang,
+  inputCustomClasses,
 }): JSX.Element => {
   let Component: any = "input";
   if (textarea) Component = "textarea";
@@ -49,7 +51,7 @@ const FormInput: FC<Props> = ({
         {...register}
         className={`w-full outline-none border bg-[#f5f5f5] rounded-sm py-[10px] px-4 ${
           disabled && "opacity-50"
-        }`}
+        } ${inputCustomClasses}`}
         rows={rows}
         placeholder={placeholder}
         disabled={disabled}

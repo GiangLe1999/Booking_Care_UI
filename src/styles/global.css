@@ -51,6 +51,10 @@ html *::-webkit-scrollbar-track {
   @apply font-bold text-2xl;
 }
 
+.main-gradient {
+  @apply bg-[linear-gradient(_90deg,#22c1c3_2.34%,rgb(12,119,207)_100.78%_)];
+}
+
 /* Admin */
 .item-level-1:hover .items-block-level-3 {
   visibility: hidden;
@@ -74,8 +78,7 @@ html *::-webkit-scrollbar-track {
 }
 
 /* Primary Button */
-.primary-btn,
-.admin-btn {
+.primary-btn {
   background-image: linear-gradient(
     90deg,
     #22c1c3 2.34%,
@@ -86,32 +89,20 @@ html *::-webkit-scrollbar-track {
     text-white font-bold;
 }
 
-.admin-btn {
-  background-image: linear-gradient(90deg, #0071ba 2.34%, #1683f0 100.78%);
-}
-
 .cancel-btn {
   @apply mr-6 bg-[crimson] py-[10px] px-4 text-white rounded-sm font-bold hover:bg-rose-700 transition;
 }
 
-.primary-btn:hover::before,
-.admin-btn:hover::before {
+.primary-btn:hover::before {
   opacity: 1;
 }
 
-.primary-btn span,
-.login-btn span,
-.admin-btn span {
+.primary-btn span {
   @apply relative z-[3];
 }
 
-.primary-btn::before,
-.admin-btn::before {
+.primary-btn::before {
   @apply bg-[linear-gradient(315deg,#22c1c3,#057fa8)] absolute content-[''] w-full h-full transition-opacity duration-500 ease-[ease-out] z-[2] opacity-0 left-0 top-0 rounded-[5px];
-}
-
-.admin-btn::before {
-  @apply bg-[linear-gradient(315deg,#0071ba,#1683f0)];
 }
 
 /* Manage User Table */
@@ -303,5 +294,15 @@ html *::-webkit-scrollbar-track {
 
 /* HTML Content */
 .doctor-content {
-  @apply prose prose-headings:text-title_text prose-h2:text-base prose-h3:text-base container text-sm prose-img:mx-auto;
+  @apply prose prose-headings:text-title_text prose-h2:text-lg prose-h3:text-base container text-sm prose-img:mx-auto;
+}
+
+/* Text editor */
+.text-editor .tox-tinymce,
+.text-large-editor .tox-tinymce {
+  @apply !h-[90%] !border-[1px] !border-[#ccc] rounded;
+}
+
+.text-large-editor .tox-tinymce {
+  @apply !h-[600px];
 }

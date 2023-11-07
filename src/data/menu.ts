@@ -1,13 +1,15 @@
 import { path } from "../constants";
 
-export const adminMenuItems: {
+type AdminMenuItems = {
   name: string;
   menus: {
     name: string;
     link: string;
     subMenus?: { name: string; link: string }[];
   }[];
-}[] = [
+}[];
+
+export const adminMenuItems: AdminMenuItems = [
   {
     name: "adminheader.admin.user",
     menus: [
@@ -140,4 +142,16 @@ export const footerMenuItems = [
   { title: "directory", link: path.DIRECTORY },
   ...menuSidebarItems.slice(10),
   { title: "privacy", link: path.PRIVACY },
+];
+
+export const doctorMenuItems: AdminMenuItems = [
+  {
+    name: "adminheader.admin.user",
+    menus: [
+      {
+        name: "manage-schedule",
+        link: path.MANAGE_SCHEDULE,
+      },
+    ],
+  },
 ];

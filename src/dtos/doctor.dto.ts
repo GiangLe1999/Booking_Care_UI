@@ -25,10 +25,28 @@ export interface SaveDoctorInfoInput {
   doctorId: number;
   content: string;
   description?: string;
+  priceId: string;
+  paymentId: string;
+  provinceId?: string;
+  clinicAddress?: string;
+  clinicName: string;
+  note?: string;
 }
 
 export interface DetailedDoctor extends FetchedDoctor {
   Content: { description: string; content: string };
+  Doctor_Info: {
+    clinicAddress?: string;
+    clinicName: string;
+    count: number;
+    note?: string;
+    paymentId: string;
+    paymentTypeData: { valueEn: string; valueVi: string };
+    priceId: string;
+    priceTypeData: { valueEn: string; valueVi: string };
+    provinceId?: string;
+    provinceTypeData?: { valueEn: string; valueVi: string };
+  };
   positionData: {
     valueEn: string;
     valueVi: string;
@@ -40,3 +58,31 @@ export interface GetDoctorOutput extends CoreOutput {
 }
 
 export interface EditDoctorInfoInput extends SaveDoctorInfoInput {}
+
+export type BulkCreateSchedulesInput = {
+  doctorId: number;
+  date: Date;
+  timeType: string;
+}[];
+
+export interface FetchedSchedule {
+  id: number;
+  currentNumber: number;
+  maxNumber: number;
+  date: string;
+  timeType: string;
+  doctorId: number;
+  timeTypeData: {
+    valueEn: string;
+    valueVi: string;
+  };
+}
+
+export interface GetScheduleByDateInput {
+  doctorId: number;
+  date: string;
+}
+
+export interface GetScheduleByDateOutput extends CoreOutput {
+  schedules?: FetchedSchedule[];
+}

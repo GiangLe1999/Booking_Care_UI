@@ -1,10 +1,15 @@
 export const path = {
   HOME: "/",
+
+  // Admin
   LOGIN: "/login",
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   MANAGE_USER: "/system/manage-user",
   MANAGE_DOCTOR: "/system/manage-doctor",
+  MANAGE_SCHEDULE: "/system/manage-schedule",
+
+  // Frontend
   SPECIALITY: "/chuyen-khoa",
   FACILITY: "/co-so-y-te/tat-ca",
   DOCTOR: "/bac-si",
@@ -35,24 +40,4 @@ export const path = {
   PRIVACY: "/chinh-sach-bao-mat",
   APP: "/app",
   CALENDAR: "/lich-hen",
-};
-
-export const languages = {
-  VI: "vi",
-  EN: "en",
-};
-
-export const manageActions = {
-  ADD: "ADD",
-  EDIT: "EDIT",
-  DELETE: "DELETE",
-};
-
-export const dateFormat = {
-  SEND_TO_SERVER: "DD/MM/YYYY",
-};
-
-export const YesNoObj = {
-  YES: "Y",
-  NO: "N",
 };

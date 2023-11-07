@@ -9,14 +9,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./routes/home";
-import RootLayout from "./containers/root-layout";
 import SystemLayout from "./containers/system-layout";
 import ManageUser from "./routes/manage-user";
 import IntlProviderWrapper from "./containers/intl-provider-wrapper";
 import Login from "./routes/auth/login";
 import ManageDoctor from "./routes/manage-doctor";
-import SubLayout from "./containers/sub-layout";
 import Doctor from "./routes/doctor";
+import ManageSchedule from "./routes/manage-schedule";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +37,7 @@ const router = createBrowserRouter([
     children: [
       { path: "manage-user", element: <ManageUser /> },
       { path: "manage-doctor", element: <ManageDoctor /> },
+      { path: "manage-schedule", element: <ManageSchedule /> },
     ],
   },
 ]);

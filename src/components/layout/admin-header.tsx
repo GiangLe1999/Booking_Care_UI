@@ -16,7 +16,7 @@ const AdminHeader: FC<Props> = (props): JSX.Element => {
 
   const dispatch = useDispatch();
   return (
-    <div className="z-[99] flex justify-between items-center text-white bg-admin_main_color relative">
+    <div className="z-[99] flex justify-between items-center text-white main-gradient relative">
       <div className="">
         <AdminNavigator />
       </div>

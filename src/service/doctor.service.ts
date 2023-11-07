@@ -1,9 +1,12 @@
 import axios from "../axios";
 import { CoreOutput } from "../dtos/common.dto";
 import {
+  BulkCreateSchedulesInput,
   EditDoctorInfoInput,
   GetAllDoctorsOutput,
   GetDoctorOutput,
+  GetScheduleByDateInput,
+  GetScheduleByDateOutput,
   GetTopDoctorsOutput,
   SaveDoctorInfoInput,
 } from "../dtos/doctor.dto";
@@ -59,6 +62,40 @@ export const editDoctorInfo = async (
   try {
     const { data } = await axios.put("/api/doctor-info", editDoctorInfoInput);
     return data as CoreOutput;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};
+
+export const bulkCreateSchedules = async (
+  bulkCreateSchedulesInput: BulkCreateSchedulesInput
+): Promise<CoreOutput> => {
+  try {
+    const { data } = await axios.post(
+      "/api/schedule",
+      bulkCreateSchedulesInput
+    );
+    return data as CoreOutput;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};
+
+export const getScheduleByDate = async (
+  getScheduleByDateInput: GetScheduleByDateInput
+): Promise<GetScheduleByDateOutput> => {
+  try {
+    const { data } = await axios.post(
+      "/api/get-schedule-by-date",
+      getScheduleByDateInput
+    );
+    return data as GetScheduleByDateOutput;
   } catch (error: any) {
     return {
       ok: false,

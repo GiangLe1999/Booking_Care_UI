@@ -88,7 +88,8 @@
       "specialty": "Specialty",
       "manage-specialty": "Manage specialty",
       "handbook": "Handbook",
-      "manage-handbook": "Manage handbook"
+      "manage-handbook": "Manage handbook",
+      "manage-schedule": "Manage schedule"
     }
   },
   "button": {
@@ -137,6 +138,18 @@
   "manage-doctor": {
     "choose-doctor": "Choose doctor",
     "introduction": "Introductory information",
+    "detail": "Detail information",
+    "choose-price": "Choose price",
+    "choose-payment": "Choose payment method",
+    "choose-province": "Choose province",
+    "choose-clinic": "Clinic name",
+    "choose-clinic-address": "Clinic address",
+    "note": "Note"
+  },
+  "manage-schedule": {
+    "choose-doctor": "Choose doctor",
+    "choose-date": "Choose date",
+    "introduction": "Introductory information",
     "detail": "Detail information"
   },
   "rightsidebar": {
@@ -145,5 +158,11 @@
   },
   "homesections": {
     "top-doctors": "Outstanding doctors"
+  },
+  "doctor-page": {
+    "schedule": "Schedule",
+    "choose": "Choose",
+    "and": "and book (Free 0",
+    "empty-schedule": "There are no appointments available during this time. Please choose another time!"
   }
 }

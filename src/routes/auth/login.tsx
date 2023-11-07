@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/slices/user-slice";
 import { path } from "../../constants";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { LoggedinUser } from "../../dtos/user.dto";
 import { FormattedMessage } from "react-intl";
@@ -35,7 +35,6 @@ interface FormValues {
 const Login: FC<Props> = (props): JSX.Element | null => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const isUser = useAuth();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -62,16 +61,19 @@ const Login: FC<Props> = (props): JSX.Element | null => {
     } else {
       dispatch(userLogin(res.user as LoggedinUser));
       toast.success("Login successfully!");
-      navigate(path.MANAGE_USER);
+
+      if (res.user?.roleId === "R1") {
+        navigate(path.MANAGE_USER);
+      } else if (res.user?.roleId === "R2") {
+        navigate(path.MANAGE_SCHEDULE);
+      }
     }
 
     setIsLoading(false);
   };
 
-  if (isUser) return <Navigate to={path.HOME} replace={true} />;
-
   return (
-    <div className="h-screen bg-[linear-gradient(135deg,#22c1c3_0%,#fdbb2d_100%)] grid place-items-center">
+    <div className="h-screen main-gradient grid place-items-center">
       <div className="w-[400px] bg-white px-8 py-10 rounded-sm">
         <h3 className="form-title">
           <FormattedMessage id="login-form.title" />

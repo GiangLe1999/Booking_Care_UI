@@ -10,7 +10,6 @@ import { FaPlus } from "react-icons/fa";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import CreateUserForm from "../components/manage-user/create-user-form";
-import TextEditor from "../components/text-editor";
 import { FormattedMessage } from "react-intl";
 
 interface Props {}
@@ -51,7 +50,6 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
                 icon={FaPlus}
                 iconSize={13}
                 iconCustomClasses="-mt-[1px]"
-                customClasses="admin-btn"
                 onClick={() => setOpenCreateModal(true)}
               />
             </div>

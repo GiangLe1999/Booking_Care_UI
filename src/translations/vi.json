@@ -91,7 +91,8 @@
       "specialty": "Chuyên khoa",
       "manage-specialty": "Quản lý chuyên khoa",
       "handbook": "Cẩm nang",
-      "manage-handbook": "Quản lý cẩm nang"
+      "manage-handbook": "Quản lý cẩm nang",
+      "manage-schedule": "Quản lý lịch khám"
     }
   },
   "button": {
@@ -140,6 +141,18 @@
   "manage-doctor": {
     "choose-doctor": "Chọn bác sĩ",
     "introduction": "Thông tin giới thiệu",
+    "detail": "Thông tin chi tiết",
+    "choose-price": "Chọn giá",
+    "choose-payment": "Chọn phương thức thanh toán",
+    "choose-province": "Chọn tỉnh thành",
+    "choose-clinic": "Tên phòng khám",
+    "choose-clinic-address": "Địa chỉ phòng khám",
+    "note": "Ghi chú"
+  },
+  "manage-schedule": {
+    "choose-doctor": "Chọn bác sĩ",
+    "choose-date": "Chọn ngày",
+    "introduction": "Thông tin giới thiệu",
     "detail": "Thông tin chi tiết"
   },
   "rightsidebar": {
@@ -148,5 +161,11 @@
   },
   "homesections": {
     "top-doctors": "Bác sĩ nổi bật"
+  },
+  "doctor-page": {
+    "schedule": "Lịch khám",
+    "choose": "Chọn",
+    "and": "và đặt ( Phí đặt lịch 0",
+    "empty-schedule": "Không có lịch hẹn trong khoảng thời gian này. Vui lòng chọn thời gian khác!"
   }
 }
