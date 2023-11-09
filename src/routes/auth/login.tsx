@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/slices/user-slice";
 import { path } from "../../constants";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
 import { LoggedinUser } from "../../dtos/user.dto";
 import { FormattedMessage } from "react-intl";
 

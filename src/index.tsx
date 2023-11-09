@@ -16,6 +16,7 @@ import Login from "./routes/auth/login";
 import ManageDoctor from "./routes/manage-doctor";
 import Doctor from "./routes/doctor";
 import ManageSchedule from "./routes/manage-schedule";
+import BookSchedule from "./routes/book-schedule";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "user/:id", element: <Doctor /> },
+      { path: "dat-lich-kham/:time", element: <BookSchedule /> },
     ],
   },
 

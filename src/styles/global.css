@@ -306,3 +306,8 @@ html *::-webkit-scrollbar-track {
 .text-large-editor .tox-tinymce {
   @apply !h-[600px];
 }
+
+/* Ensurance list modal */
+.ensurance-list-modal {
+  @apply w-[80%] rounded-sm;
+}

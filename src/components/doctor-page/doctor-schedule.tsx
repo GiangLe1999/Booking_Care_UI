@@ -7,17 +7,43 @@ import moment from "moment";
 import { ImCalendar } from "react-icons/im";
 import { FaRegHandPointUp } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   doctorId: number;
+  doctorName: string;
+  doctorImg: string;
+  doctorPosition: string | undefined;
+  doctorPrice: string | undefined;
 }
 
-const DoctorSchedule: FC<Props> = ({ doctorId }): JSX.Element => {
+const DoctorSchedule: FC<Props> = ({
+  doctorId,
+  doctorName,
+  doctorImg,
+  doctorPosition,
+  doctorPrice,
+}): JSX.Element => {
+  const navigate = useNavigate();
+
   const [periods, setPeriods] = useState<FetchedSchedule[]>([]);
   const currentLanguage = useGetLanguage();
-  const [currentDate, setCurrentDate] = useState<string>(
-    moment().startOf("day").locale("vi").format("L").toString()
+  const [currentDate, setCurrentDate] = useState<number>(
+    moment().startOf("day").locale("vi").valueOf()
   );
+
+  const bookScheduleHandler = (time: string) => {
+    navigate(`/dat-lich-kham/${moment(currentDate).valueOf()}`, {
+      state: {
+        time,
+        date: currentDate,
+        doctorName,
+        doctorImg,
+        doctorPosition,
+        doctorPrice,
+      },
+    });
+  };
 
   const fetchSchedule = async () => {
     const res = await getScheduleByDate({ doctorId, date: currentDate });
@@ -30,7 +56,6 @@ const DoctorSchedule: FC<Props> = ({ doctorId }): JSX.Element => {
     fetchSchedule();
   }, [currentDate]);
 
-  console.log(periods);
   return (
     <div>
       <select
@@ -38,7 +63,7 @@ const DoctorSchedule: FC<Props> = ({ doctorId }): JSX.Element => {
         id="schedule"
         className="text-[#337ab7] font-semibold border-b border-[#999] text-sm min-w-[131px] py-1 cursor-pointer capitalize outline-none"
         value={currentDate}
-        onChange={(e) => setCurrentDate(e.target.value)}
+        onChange={(e) => setCurrentDate(Number(e.target.value))}
       >
         {sevenDaysArr.map((opt) => (
           <option value={opt.value} key={opt.value} className="capitalize">
@@ -57,6 +82,13 @@ const DoctorSchedule: FC<Props> = ({ doctorId }): JSX.Element => {
           <div className="grid grid-cols-4 gap-2">
             {periods.map((period) => (
               <button
+                onClick={() =>
+                  bookScheduleHandler(
+                    currentLanguage === "vi"
+                      ? period.timeTypeData.valueVi
+                      : period.timeTypeData.valueEn
+                  )
+                }
                 key={period.id}
                 className="w-full text-center py-[10px] bg-yellow text-xs font-bold rounded-sm cursor-pointer border-[2px] border-transparent hover:border-main_color transition"
               >

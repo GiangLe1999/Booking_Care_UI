@@ -101,7 +101,8 @@
     "confirm": "Xác nhận",
     "cancel": "Hủy bỏ",
     "click-here": "Bấm vào đây",
-    "see-more": "Xem thêm"
+    "see-more": "Xem thêm",
+    "book": "Xác nhận đặt khám"
   },
   "login-form": {
     "title": "Đăng Nhập",
@@ -166,6 +167,19 @@
     "schedule": "Lịch khám",
     "choose": "Chọn",
     "and": "và đặt ( Phí đặt lịch 0",
-    "empty-schedule": "Không có lịch hẹn trong khoảng thời gian này. Vui lòng chọn thời gian khác!"
+    "empty-schedule": "Không có lịch hẹn trong khoảng thời gian này. Vui lòng chọn thời gian khác!",
+    "address": "ĐỊA CHỈ KHÁM",
+    "price": "Giá khám",
+    "payment_method": "Phòng khám có thanh toán bằng hình thức",
+    "insurance": "LOẠI BẢO HIỂM ÁP DỤNG",
+    "nation_insurance": "Bảo hiểm y tế nhà nước",
+    "nation_insurance_detail": "Hiện chưa áp dụng bảo hiểm y tế nhà nước cho dịch vụ khám chuyên gia.",
+    "private_insurance": "Bảo hiểm tư nhân",
+    "private_insurance_detail": "Đối với các đơn vị bảo hiểm không bảo lãnh trực tiếp, phòng khám xuất hoá đơn tài chính (hoá đơn đỏ) và hỗ trợ bệnh nhân hoàn thiện hồ sơ.",
+    "watch_list": "Xem danh sách",
+    "list_title": "DANH SÁCH CÔNG TY BẢO LÃNH",
+    "minimize": "Thu gọn",
+    "see_detail": "Xem chi tiết",
+    "hide_price": "Ẩn bảng giá"
   }
 }

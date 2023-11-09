@@ -20,6 +20,7 @@ interface Props {
   twoLang: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   inputCustomClasses?: string;
+  labelCustomClasses?: string;
 }
 
 const FormInput: FC<Props> = ({
@@ -37,12 +38,13 @@ const FormInput: FC<Props> = ({
   onChange,
   twoLang,
   inputCustomClasses,
+  labelCustomClasses,
 }): JSX.Element => {
   let Component: any = "input";
   if (textarea) Component = "textarea";
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="form-input-label">
+      <label htmlFor={id} className={`form-input-label ${labelCustomClasses}`}>
         {twoLang ? <FormattedMessage id={label} /> : label}
       </label>
       <Component

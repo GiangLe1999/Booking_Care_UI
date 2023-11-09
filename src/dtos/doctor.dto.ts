@@ -80,7 +80,7 @@ export interface FetchedSchedule {
 
 export interface GetScheduleByDateInput {
   doctorId: number;
-  date: string;
+  date: number;
 }
 
 export interface GetScheduleByDateOutput extends CoreOutput {

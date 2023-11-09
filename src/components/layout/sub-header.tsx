@@ -10,7 +10,7 @@ interface Props {
 const SubHeader: FC<Props> = ({ headingContent }): JSX.Element => {
   const navigate = useNavigate();
   return (
-    <header className="bg-main_color py-2 fixed top-0 right-0 left-0">
+    <header className="bg-main_color py-2 fixed top-0 right-0 left-0 z-50">
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center gap-2">
           <ImArrowLeft

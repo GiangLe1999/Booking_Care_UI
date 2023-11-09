@@ -98,7 +98,8 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "click-here": "Click here",
-    "see-more": "See more"
+    "see-more": "See more",
+    "book": "Booking Confirm"
   },
   "login-form": {
     "title": "Login",
@@ -163,6 +164,18 @@
     "schedule": "Schedule",
     "choose": "Choose",
     "and": "and book (Free 0",
-    "empty-schedule": "There are no appointments available during this time. Please choose another time!"
+    "empty-schedule": "There are no appointments available during this time. Please choose another time!",
+    "address": "CLINIC ADDRESS",
+    "price": "Consultation fee",
+    "insurance": "APPLICABLE INSURANCE TYPE",
+    "nation_insurance": "National Health insurance",
+    "nation_insurance_detail": "National health insurance is not currently applicable for specialist consultations.",
+    "private_insurance": "Private insurance",
+    "private_insurance_detail": "For insurance providers that do not offer direct billing, the clinic issues financial invoices (red invoices) and assists patients in completing the necessary paperwork.",
+    "watch_list": "View list",
+    "list_title": "LIST OF INSURANCE COMPANIES",
+    "minimize": "Minimize",
+    "see_detail": "See details",
+    "hide_price": "Hide price list"
   }
 }
