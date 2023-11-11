@@ -32,15 +32,17 @@ const DoctorSchedule: FC<Props> = ({
     moment().startOf("day").locale("vi").valueOf()
   );
 
-  const bookScheduleHandler = (time: string) => {
+  const bookScheduleHandler = (time: string, timeType: string) => {
     navigate(`/dat-lich-kham/${moment(currentDate).valueOf()}`, {
       state: {
         time,
+        timeType,
         date: currentDate,
         doctorName,
         doctorImg,
         doctorPosition,
         doctorPrice,
+        doctorId,
       },
     });
   };
@@ -86,7 +88,8 @@ const DoctorSchedule: FC<Props> = ({
                   bookScheduleHandler(
                     currentLanguage === "vi"
                       ? period.timeTypeData.valueVi
-                      : period.timeTypeData.valueEn
+                      : period.timeTypeData.valueEn,
+                    period.timeType
                   )
                 }
                 key={period.id}

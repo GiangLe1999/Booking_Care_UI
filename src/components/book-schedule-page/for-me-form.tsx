@@ -10,13 +10,25 @@ import BtnWithLoading from "../btn-with-loading";
 import { FaPlusCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { path } from "../../constants";
+import { MdEmail } from "react-icons/md";
+import { CoreOutput } from "../../dtos/common.dto";
+import { bookSchedule } from "../../service/patient.service";
+import { toast } from "react-toastify";
 
 interface Props {
   price: string;
+  doctorId: string;
+  timeType: string;
+  date: string;
+  doctorName: string;
+  time: string;
 }
 
-const schema = Yup.object({
+const schema: any = Yup.object({
   patientName: Yup.string().required("Vui lòng nhập thông tin"),
+  email: Yup.string()
+    .email("Your email is invalid")
+    .required("Please enter your email"),
   phone: Yup.string().required("Vui lòng nhập thông tin"),
   dateOfBirth: Yup.string().required("Vui lòng nhập thông tin"),
   address: Yup.string().required("Vui lòng nhập thông tin"),
@@ -24,21 +36,32 @@ const schema = Yup.object({
 
 interface FormValues {
   patientName: string;
+  email: string;
   phone: string;
   dateOfBirth: string;
   address: string;
+  reason: string;
 }
 
-const ForMeForm: FC<Props> = ({ price }): JSX.Element => {
+const ForMeForm: FC<Props> = ({
+  price,
+  doctorId,
+  date,
+  timeType,
+  doctorName,
+  time,
+}): JSX.Element => {
   const [gender, setGender] = useState("male");
-  const [reason, setReason] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<FormValues>({
     defaultValues: {
       patientName: "",
+      email: "",
       phone: "",
       dateOfBirth: "",
       address: "",
+      reason: "",
     },
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -48,7 +71,33 @@ const ForMeForm: FC<Props> = ({ price }): JSX.Element => {
 
   const { errors } = formState;
 
-  const onSubmit = async (data: FormValues) => {};
+  const onSubmit = async (formData: FormValues) => {
+    try {
+      setIsLoading(true);
+      const data: CoreOutput = await bookSchedule({
+        ...formData,
+        date,
+        timeType,
+        time,
+        doctorName,
+        doctorId: Number(doctorId),
+        gender,
+      });
+
+      console.log(data);
+
+      setIsLoading(false);
+
+      if (!data.ok) {
+        return toast.error(data.error);
+      } else {
+        return toast.success("Đặt lịch thành công");
+      }
+    } catch (error: any) {
+      setIsLoading(false);
+      return toast.error(error.message);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,6 +165,21 @@ const ForMeForm: FC<Props> = ({ price }): JSX.Element => {
 
       <div className="relative mt-4">
         <FormInput
+          id="email"
+          label=""
+          register={register("email")}
+          errorMsg={errors.email?.message}
+          placeholder="Email liên hệ (bắt buộc)"
+          twoLang={false}
+          inputCustomClasses="pl-12 focus:border-main_color"
+        />
+        <div className="absolute left-4 top-[14px] cursor-pointer text-[#666]">
+          <MdEmail size={20} />
+        </div>
+      </div>
+
+      <div className="relative mt-4">
+        <FormInput
           id="dateOfBirth"
           label=""
           register={register("dateOfBirth")}
@@ -149,8 +213,8 @@ const ForMeForm: FC<Props> = ({ price }): JSX.Element => {
           textarea
           rows={4}
           id="reason"
-          value={reason}
-          onChange={(e) => setReason(e.target.value)}
+          register={register("reason")}
+          errorMsg={errors.reason?.message}
           label=""
           placeholder="Lý do khám"
           twoLang={false}
@@ -212,7 +276,7 @@ const ForMeForm: FC<Props> = ({ price }): JSX.Element => {
 
       <BtnWithLoading
         content="book"
-        isLoading={false}
+        isLoading={isLoading}
         customClasses="mt-2 w-full"
         type="submit"
       />

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/global.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,6 +16,7 @@ import ManageDoctor from "./routes/manage-doctor";
 import Doctor from "./routes/doctor";
 import ManageSchedule from "./routes/manage-schedule";
 import BookSchedule from "./routes/book-schedule";
+import VerifyBooking from "./routes/verify-booking";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "user/:id", element: <Doctor /> },
       { path: "dat-lich-kham/:time", element: <BookSchedule /> },
+      { path: "verify-booking", element: <VerifyBooking /> },
     ],
   },
 

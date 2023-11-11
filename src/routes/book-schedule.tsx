@@ -7,29 +7,8 @@ import moment from "moment";
 import "moment/locale/vi";
 import { formatVNDCurrency } from "../utils/formatPrice";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import FormInput from "../components/form-input";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { ImUser } from "react-icons/im";
-import BtnWithLoading from "../components/btn-with-loading";
-import { IoCalendar } from "react-icons/io5";
 import ForMeForm from "../components/book-schedule-page/for-me-form";
 import ForFamilyForm from "../components/book-schedule-page/for-family-form";
-
-const schema = Yup.object({
-  patientName: Yup.string().required("Vui lòng nhập thông tin"),
-  phone: Yup.string().required("Vui lòng nhập thông tin"),
-  dateOfBirth: Yup.string().required("Vui lòng nhập thông tin"),
-  address: Yup.string().required("Vui lòng nhập thông tin"),
-});
-
-interface FormValues {
-  patientName: string;
-  phone: string;
-  dateOfBirth: string;
-  address: string;
-}
 
 interface Props {}
 
@@ -38,28 +17,17 @@ const BookSchedule: FC<Props> = (props): JSX.Element => {
   const navigate = useNavigate();
 
   const [forWho, setForWho] = useState("forMe");
-  const [gender, setGender] = useState("male");
-  const [patientPhone, setPatientPhone] = useState("");
 
-  const { time, date, doctorName, doctorImg, doctorPosition, doctorPrice } =
-    location.state;
-
-  const form = useForm<FormValues>({
-    defaultValues: {
-      patientName: "",
-      phone: "",
-      dateOfBirth: "",
-      address: "",
-    },
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
-
-  const { register, handleSubmit, formState } = form;
-
-  const { errors } = formState;
-
-  const onSubmit = async (data: FormValues) => {};
+  const {
+    doctorId,
+    time,
+    timeType,
+    date,
+    doctorName,
+    doctorImg,
+    doctorPosition,
+    doctorPrice,
+  } = location.state;
 
   return (
     <>
@@ -71,7 +39,7 @@ const BookSchedule: FC<Props> = (props): JSX.Element => {
             <StyledImage
               wrapperClasses="w-[120px] aspect-square rounded-full overflow-hidden shadow-md"
               src={doctorImg}
-              alt={`doctorName`}
+              alt={doctorName}
             />
 
             <div className="text-[#555]">
@@ -110,7 +78,7 @@ const BookSchedule: FC<Props> = (props): JSX.Element => {
               name="forWho"
               id="forMe"
               checked={forWho === "forMe"}
-              onClick={() => setForWho("forMe")}
+              onChange={() => setForWho("forMe")}
             />
             <label htmlFor="forMe" className="cursor-pointer">
               Đặt cho mình
@@ -123,7 +91,7 @@ const BookSchedule: FC<Props> = (props): JSX.Element => {
               name="forWho"
               id="forFamily"
               checked={forWho === "forFamily"}
-              onClick={() => setForWho("forFamily")}
+              onChange={() => setForWho("forFamily")}
             />
             <label htmlFor="forFamily" className="cursor-pointer">
               Đặt cho người thân
@@ -132,9 +100,23 @@ const BookSchedule: FC<Props> = (props): JSX.Element => {
         </div>
 
         {forWho === "forMe" ? (
-          <ForMeForm price={formatVNDCurrency(doctorPrice)} />
+          <ForMeForm
+            price={formatVNDCurrency(doctorPrice)}
+            doctorId={doctorId}
+            timeType={timeType}
+            date={date}
+            time={time}
+            doctorName={doctorName}
+          />
         ) : (
-          <ForFamilyForm price={formatVNDCurrency(doctorPrice)} />
+          <ForFamilyForm
+            price={formatVNDCurrency(doctorPrice)}
+            doctorId={doctorId}
+            timeType={timeType}
+            date={date}
+            time={time}
+            doctorName={doctorName}
+          />
         )}
       </div>
 
