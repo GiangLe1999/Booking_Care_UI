@@ -99,7 +99,9 @@
     "cancel": "Cancel",
     "click-here": "Click here",
     "see-more": "See more",
-    "book": "Booking Confirm"
+    "read-more": "Read more",
+    "book": "Booking Confirm",
+    "hide": "Hide"
   },
   "login-form": {
     "title": "Login",
@@ -138,6 +140,7 @@
   },
   "manage-doctor": {
     "choose-doctor": "Choose doctor",
+    "choose-specialty": "Choose specialty",
     "introduction": "Introductory information",
     "detail": "Detail information",
     "choose-price": "Choose price",
@@ -153,12 +156,19 @@
     "introduction": "Introductory information",
     "detail": "Detail information"
   },
+  "manage-specialty": {
+    "title": "Manage Specialty",
+    "choose-name": "Speciality name",
+    "choose-thumbnail": "Choose thumbnail for specialty",
+    "thumbnail-ratio": "Image ratio (16/9)"
+  },
   "rightsidebar": {
     "calendar": "Scheduled appointment",
     "download": "Download App"
   },
   "homesections": {
-    "top-doctors": "Outstanding doctors"
+    "top-doctors": "Outstanding doctors",
+    "specialties": "Specialties"
   },
   "doctor-page": {
     "schedule": "Schedule",
@@ -167,6 +177,7 @@
     "empty-schedule": "There are no appointments available during this time. Please choose another time!",
     "address": "CLINIC ADDRESS",
     "price": "Consultation fee",
+    "payment_method": "The clinic accepts payment with",
     "insurance": "APPLICABLE INSURANCE TYPE",
     "nation_insurance": "National Health insurance",
     "nation_insurance_detail": "National health insurance is not currently applicable for specialist consultations.",

@@ -12,7 +12,7 @@ interface Props {}
 
 const RootFooter: FC<Props> = (props): JSX.Element => {
   return (
-    <footer className=" mt-14 bg-[#f9f9f9] border-t pt-[30px] text-normal_text">
+    <footer className="bg-[#f9f9f9] border-t pt-[30px] text-normal_text">
       <div className="grid grid-cols-2 gap-8 container py-6 border-b border-[#ccc]">
         <div>
           <Logo wrapperClasses="w-[200px] h-11" />

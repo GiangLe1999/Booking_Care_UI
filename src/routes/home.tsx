@@ -6,6 +6,7 @@ import DownloadApp from "../components/home-page/download-app";
 import DownloadAppBtns from "../components/home-page/download-app-btns";
 import TopDoctors from "../components/home-page/top-doctors";
 import RootLayout from "../containers/root-layout";
+import Specialties from "../components/home-page/specialties";
 
 interface Props {}
 
@@ -35,11 +36,15 @@ const Home: FC<Props> = (props): JSX.Element => {
           </div>
         </div>
 
+        <div className="pt-10 pb-16">
+          <Specialties />
+        </div>
+
         <div className="has-bg-section-1">
           <TopDoctors />
         </div>
 
-        <div className=" py-10 px-4">
+        <div className="py-10 px-4">
           <DownloadApp />
         </div>
       </div>

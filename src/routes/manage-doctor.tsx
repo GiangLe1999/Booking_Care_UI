@@ -13,20 +13,19 @@ import {
 import { DetailedDoctor } from "../dtos/doctor.dto";
 import { toast } from "react-toastify";
 import AdminProtectedPage from "../containers/admin-protected-page";
-import { formatDoctorsDataForSelect } from "../utils/formatDoctorsDataForSelect";
+import {
+  formatDoctorsDataForSelect,
+  formatSpecialtiesDataForSelect,
+} from "../utils/formatDoctorsDataForSelect";
 import FormInput from "../components/form-input";
 import { getCodesByType } from "../service/allcodes.service";
 import { useGetLanguage } from "../hooks/useGetLanguage";
+import { IOption } from "../dtos/common.dto";
 
 const defaultOption = {
   value: "",
   label: "",
 };
-
-interface IOption {
-  label: string;
-  value: string;
-}
 
 interface Props {}
 
@@ -38,18 +37,16 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
   const [prices, setPrices] = useState<IOption[]>([]);
   const [payments, setPayments] = useState<IOption[]>([]);
   const [provinces, setProvinces] = useState<IOption[]>([]);
+  const [specialties, setSpecialties] = useState<IOption[]>([]);
 
   const [selectedDoctor, setSelectedDoctor] = useState(defaultOption);
   const [currentDoctor, setCurrentDoctor] = useState<DetailedDoctor>();
   const [isLoadingCurrentDoctor, setIsLoadingCurrentDoctor] = useState(false);
 
   const [selectedPrice, setSelectedPrice] = useState(defaultOption);
-
   const [selectedProvince, setSelectedProvince] = useState(defaultOption);
-
   const [selectedPayment, setSelectedPayment] = useState(defaultOption);
-
-  console.log(selectedPrice, selectedPayment, selectedProvince);
+  const [selectedSpecialty, setSelectedSpecialty] = useState(defaultOption);
 
   const [clinicName, setClinicName] = useState("");
   const [clinicAddress, setClinicAddress] = useState("");
@@ -83,6 +80,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
         priceId: selectedPrice.value,
         provinceId: selectedProvince.value,
         paymentId: selectedPayment.value,
+        specialtyId: selectedSpecialty.value,
         clinicAddress,
         clinicName,
         note,
@@ -105,6 +103,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
         description,
         priceId: selectedPrice.value,
         provinceId: selectedProvince.value,
+        specialtyId: selectedSpecialty.value,
         paymentId: selectedPayment.value,
         clinicAddress,
         clinicName,
@@ -132,31 +131,40 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
     setDoctors(formattedDoctors as { label: string; value: string }[]);
   };
 
+  const fetchSpecialties = async () => {
+    const formattedSpecialties = await formatSpecialtiesDataForSelect();
+
+    setSpecialties(formattedSpecialties as { label: string; value: string }[]);
+  };
+
   const fetchData = async () => {
     const promise1 = getCodesByType("PRICE");
     const promise2 = getCodesByType("PAYMENT");
     const promise3 = getCodesByType("PROVINCE");
     const promise4 = fetchDoctors();
-    Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
-      const formattedPrices = values[0]?.codes?.map((code) => ({
-        label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
-        value: code.keyMap,
-      }));
+    const promise5 = fetchSpecialties();
+    Promise.all([promise1, promise2, promise3, promise4, promise5]).then(
+      (values) => {
+        const formattedPrices = values[0]?.codes?.map((code) => ({
+          label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
+          value: code.keyMap,
+        }));
 
-      const formattedPayments = values[1]?.codes?.map((code) => ({
-        label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
-        value: code.keyMap,
-      }));
+        const formattedPayments = values[1]?.codes?.map((code) => ({
+          label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
+          value: code.keyMap,
+        }));
 
-      const formattedProvinces = values[2]?.codes?.map((code) => ({
-        label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
-        value: code.keyMap,
-      }));
+        const formattedProvinces = values[2]?.codes?.map((code) => ({
+          label: currentLanguage === "vi" ? code.valueVi : code.valueEn,
+          value: code.keyMap,
+        }));
 
-      setPrices(formattedPrices || []);
-      setPayments(formattedPayments || []);
-      setProvinces(formattedProvinces || []);
-    });
+        setPrices(formattedPrices || []);
+        setPayments(formattedPayments || []);
+        setProvinces(formattedProvinces || []);
+      }
+    );
   };
 
   useEffect(() => {
@@ -279,7 +287,7 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 grid grid-cols-2 gap-4">
               <FormInput
                 id="clinicName"
                 label="manage-doctor.choose-clinic"
@@ -288,9 +296,22 @@ const ManageDoctor: FC<Props> = (props): JSX.Element => {
                 onChange={(e) => setClinicName(e.target.value)}
                 inputCustomClasses="bg-transparent border-[#cccccc] rounded !py-[7px]"
               />
+
+              <div>
+                <label className="form-input-label mb-1 block">
+                  <FormattedMessage id="manage-doctor.choose-specialty" />
+                </label>
+                <Select
+                  options={specialties}
+                  className="!outline-none"
+                  onChange={setSelectedSpecialty as any}
+                  defaultValue={selectedSpecialty}
+                  value={selectedSpecialty}
+                />
+              </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-2">
               <FormInput
                 id="clinicAddress"
                 label="manage-doctor.choose-clinic-address"

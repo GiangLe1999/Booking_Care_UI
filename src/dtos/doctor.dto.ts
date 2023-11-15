@@ -28,6 +28,7 @@ export interface SaveDoctorInfoInput {
   priceId: string;
   paymentId: string;
   provinceId?: string;
+  specialtyId?: string;
   clinicAddress?: string;
   clinicName: string;
   note?: string;

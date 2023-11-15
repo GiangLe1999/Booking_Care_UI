@@ -17,6 +17,9 @@ import Doctor from "./routes/doctor";
 import ManageSchedule from "./routes/manage-schedule";
 import BookSchedule from "./routes/book-schedule";
 import VerifyBooking from "./routes/verify-booking";
+import ManageClinic from "./routes/manage-clinic";
+import ManageSpecialty from "./routes/manage-specialty";
+import Specialty from "./routes/specialty";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,7 @@ const router = createBrowserRouter([
       { path: "user/:id", element: <Doctor /> },
       { path: "dat-lich-kham/:time", element: <BookSchedule /> },
       { path: "verify-booking", element: <VerifyBooking /> },
+      { path: "specialty/:id", element: <Specialty /> },
     ],
   },
 
@@ -41,6 +45,8 @@ const router = createBrowserRouter([
       { path: "manage-user", element: <ManageUser /> },
       { path: "manage-doctor", element: <ManageDoctor /> },
       { path: "manage-schedule", element: <ManageSchedule /> },
+      { path: "manage-clinic", element: <ManageClinic /> },
+      { path: "manage-specialty", element: <ManageSpecialty /> },
     ],
   },
 ]);

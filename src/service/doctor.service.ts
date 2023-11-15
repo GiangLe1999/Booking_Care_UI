@@ -103,3 +103,20 @@ export const getScheduleByDate = async (
     };
   }
 };
+
+export const getDoctorsBySpecialty = async (
+  specialtyId: string,
+  location: string = "ALL"
+) => {
+  try {
+    const { data } = await axios(
+      `/api/get-doctors-by-specialty?specialtyId=${specialtyId}&location=${location}`
+    );
+    return data;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};

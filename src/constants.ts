@@ -8,6 +8,8 @@ export const path = {
   MANAGE_USER: "/system/manage-user",
   MANAGE_DOCTOR: "/system/manage-doctor",
   MANAGE_SCHEDULE: "/system/manage-schedule",
+  MANAGE_CLINIC: "/system/manage-clinic",
+  MANAGE_SPECIALTY: "/system/manage-specialty",
 
   // Frontend
   SPECIALITY: "/chuyen-khoa",

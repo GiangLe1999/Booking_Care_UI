@@ -102,7 +102,9 @@
     "cancel": "Hủy bỏ",
     "click-here": "Bấm vào đây",
     "see-more": "Xem thêm",
-    "book": "Xác nhận đặt khám"
+    "read-more": "Đọc thêm",
+    "book": "Xác nhận đặt khám",
+    "hide": "Ẩn bớt"
   },
   "login-form": {
     "title": "Đăng Nhập",
@@ -141,6 +143,7 @@
   },
   "manage-doctor": {
     "choose-doctor": "Chọn bác sĩ",
+    "choose-specialty": "Chọn chuyên khoa",
     "introduction": "Thông tin giới thiệu",
     "detail": "Thông tin chi tiết",
     "choose-price": "Chọn giá",
@@ -156,12 +159,19 @@
     "introduction": "Thông tin giới thiệu",
     "detail": "Thông tin chi tiết"
   },
+  "manage-specialty": {
+    "title": "Quản lý chuyên khoa",
+    "choose-name": "Tên chuyên khoa",
+    "choose-thumbnail": "Chọn ảnh đại diện cho chuyên khoa",
+    "thumbnail-ratio": "Tỉ lệ ảnh (16/9)"
+  },
   "rightsidebar": {
     "calendar": "Lịch hẹn đã đặt",
     "download": "Tải App"
   },
   "homesections": {
-    "top-doctors": "Bác sĩ nổi bật"
+    "top-doctors": "Bác sĩ nổi bật",
+    "specialties": "Chuyên khoa"
   },
   "doctor-page": {
     "schedule": "Lịch khám",

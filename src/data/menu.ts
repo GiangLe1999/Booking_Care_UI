@@ -34,7 +34,7 @@ export const adminMenuItems: AdminMenuItems = [
     menus: [
       {
         name: "manage-clinic",
-        link: "/system/system-parameter",
+        link: path.MANAGE_CLINIC,
       },
     ],
   },
@@ -44,7 +44,7 @@ export const adminMenuItems: AdminMenuItems = [
     menus: [
       {
         name: "manage-specialty",
-        link: "/system/system-parameter",
+        link: path.MANAGE_SPECIALTY,
       },
     ],
   },

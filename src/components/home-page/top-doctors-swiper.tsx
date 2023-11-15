@@ -20,8 +20,6 @@ export default function TopDoctorsSwiper() {
     setIsLoading(true);
     const res = await getTopDoctors(20);
 
-    console.log(res);
-
     if (res.doctors) {
       setDoctors(res.doctors);
     }

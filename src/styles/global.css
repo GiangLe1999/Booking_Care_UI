@@ -272,13 +272,34 @@ html *::-webkit-scrollbar-track {
   @apply !px-16;
 }
 
+.specialties-swiper {
+  @apply !px-[76px];
+}
+
 .top-doctors-swiper .swiper-button-prev,
-.top-doctors-swiper .swiper-button-next {
+.top-doctors-swiper .swiper-button-next,
+.specialties-swiper .swiper-button-prev,
+.specialties-swiper .swiper-button-next {
   @apply bg-white w-10 h-10 rounded-lg border border-[#34929e] -translate-y-[23px];
   box-shadow: rgb(201, 236, 240) 2px 2px 5px;
 }
 
+.specialties-swiper .swiper-button-prev,
+.specialties-swiper .swiper-button-next {
+  @apply -translate-y-0;
+}
+
+.specialties-swiper .swiper-button-prev {
+  @apply translate-x-4;
+}
+
+.specialties-swiper .swiper-button-next {
+  @apply -translate-x-4;
+}
+
 .top-doctors-swiper .swiper-button-next::after,
+.swiper-button-prev::after,
+.specialties-swiper .swiper-button-next::after,
 .swiper-button-prev::after {
   @apply text-[#34929e] scale-[0.4];
 }
@@ -293,13 +314,27 @@ html *::-webkit-scrollbar-track {
 }
 
 /* HTML Content */
-.doctor-content {
+.doctor-content,
+.specialty-content {
   @apply prose prose-headings:text-title_text prose-h2:text-lg prose-h3:text-base container text-sm prose-img:mx-auto;
+}
+
+.specialty-content {
+  @apply prose-headings:text-title_text prose-h1:text-2xl prose-h1:font-semibold prose-h1:mb-0;
+}
+
+.specialty-content strong {
+  @apply font-semibold;
+}
+
+.specialty-doctor-description h1 {
+  @apply text-main_color font-semibold -mt-1;
 }
 
 /* Text editor */
 .text-editor .tox-tinymce,
-.text-large-editor .tox-tinymce {
+.text-large-editor .tox-tinymce,
+.mange-speciaty-editor .tox-tinymce {
   @apply !h-[90%] !border-[1px] !border-[#ccc] rounded;
 }
 
@@ -307,7 +342,28 @@ html *::-webkit-scrollbar-track {
   @apply !h-[600px];
 }
 
+.mange-speciaty-editor .tox-tinymce {
+  @apply !h-[94%] !rounded-sm;
+}
+
 /* Ensurance list modal */
 .ensurance-list-modal {
   @apply w-[80%] rounded-sm;
+}
+
+/* Specialty page */
+.specialty-page-bg {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.specialty-page-overlay {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1)
+  );
 }
