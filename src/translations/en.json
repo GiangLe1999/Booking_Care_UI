@@ -150,6 +150,7 @@
     "choose-clinic-address": "Clinic address",
     "note": "Note"
   },
+
   "manage-schedule": {
     "choose-doctor": "Choose doctor",
     "choose-date": "Choose date",
@@ -162,13 +163,23 @@
     "choose-thumbnail": "Choose thumbnail for specialty",
     "thumbnail-ratio": "Image ratio (16/9)"
   },
+  "manage-clinic": {
+    "title": "Manage Clinic",
+    "choose-name": "Clinic name",
+    "choose-thumbnail": "Choose clinic's thumbnail",
+    "choose-cover": "Choose clinic's cover",
+    "choose-address": "Clinic address",
+    "thumbnail-ratio": "Image ratio (16/9)",
+    "cover-ratio": "Image ratio (2.41)"
+  },
   "rightsidebar": {
     "calendar": "Scheduled appointment",
     "download": "Download App"
   },
   "homesections": {
     "top-doctors": "Outstanding doctors",
-    "specialties": "Specialties"
+    "specialties": "Specialties",
+    "clinics": "Medical facilities"
   },
   "doctor-page": {
     "schedule": "Schedule",

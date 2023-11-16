@@ -331,6 +331,10 @@ html *::-webkit-scrollbar-track {
   @apply text-main_color font-semibold -mt-1;
 }
 
+.clinic-content {
+  @apply prose prose-img:mx-auto prose-h2:text-[#337ab7] prose-h2:text-lg prose-h2:my-3 prose-h3:text-base prose-h3:text-title_text prose-h3:my-3;
+}
+
 /* Text editor */
 .text-editor .tox-tinymce,
 .text-large-editor .tox-tinymce,

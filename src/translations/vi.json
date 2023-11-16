@@ -165,13 +165,23 @@
     "choose-thumbnail": "Chọn ảnh đại diện cho chuyên khoa",
     "thumbnail-ratio": "Tỉ lệ ảnh (16/9)"
   },
+  "manage-clinic": {
+    "title": "Quản lý phòng khám",
+    "choose-name": "Tên phòng khám",
+    "choose-thumbnail": "Chọn ảnh đại diện cho phòng khám",
+    "choose-cover": "Chọn ảnh bìa cho phòng khám",
+    "choose-address": "Địa chỉ phòng khám",
+    "thumbnail-ratio": "Tỉ lệ ảnh (16/9)",
+    "cover-ratio": "Tỉ lệ ảnh (2.41)"
+  },
   "rightsidebar": {
     "calendar": "Lịch hẹn đã đặt",
     "download": "Tải App"
   },
   "homesections": {
     "top-doctors": "Bác sĩ nổi bật",
-    "specialties": "Chuyên khoa"
+    "specialties": "Chuyên khoa",
+    "clinics": "Cơ sở y tế"
   },
   "doctor-page": {
     "schedule": "Lịch khám",

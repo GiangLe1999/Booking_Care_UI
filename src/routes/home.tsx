@@ -7,6 +7,7 @@ import DownloadAppBtns from "../components/home-page/download-app-btns";
 import TopDoctors from "../components/home-page/top-doctors";
 import RootLayout from "../containers/root-layout";
 import Specialties from "../components/home-page/specialties";
+import Clinics from "../components/home-page/clinics";
 
 interface Props {}
 
@@ -38,6 +39,10 @@ const Home: FC<Props> = (props): JSX.Element => {
 
         <div className="pt-10 pb-16">
           <Specialties />
+        </div>
+
+        <div className="pt-10 pb-16">
+          <Clinics />
         </div>
 
         <div className="has-bg-section-1">

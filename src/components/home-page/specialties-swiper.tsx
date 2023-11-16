@@ -16,7 +16,7 @@ export default function SpecialtiesSwiper() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchDoctors = async () => {
+  const fetchSpecialties = async () => {
     setIsLoading(true);
     const res = await getAllSpecialties();
 
@@ -28,7 +28,7 @@ export default function SpecialtiesSwiper() {
   };
 
   useEffect(() => {
-    fetchDoctors();
+    fetchSpecialties();
   }, []);
 
   return (
@@ -37,7 +37,7 @@ export default function SpecialtiesSwiper() {
         navigation={true}
         modules={[Navigation]}
         className="specialties-swiper"
-        spaceBetween={75}
+        spaceBetween={15}
         slidesPerView={3}
         slidesPerGroup={4}
         speed={800}

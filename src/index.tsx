@@ -20,6 +20,7 @@ import VerifyBooking from "./routes/verify-booking";
 import ManageClinic from "./routes/manage-clinic";
 import ManageSpecialty from "./routes/manage-specialty";
 import Specialty from "./routes/specialty";
+import Clinic from "./routes/clinic";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "dat-lich-kham/:time", element: <BookSchedule /> },
       { path: "verify-booking", element: <VerifyBooking /> },
       { path: "specialty/:id", element: <Specialty /> },
+      { path: "clinic/:id", element: <Clinic /> },
     ],
   },
 

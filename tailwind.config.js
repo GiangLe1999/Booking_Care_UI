@@ -10,7 +10,7 @@ module.exports = {
         section_bg: "#f5f5f5",
         title_text: "#333333",
         normal_text: "#444444",
-        yellow: "#fff04b",
+        yellow: "#ffc20e",
       },
       typography: {
         DEFAULT: {
