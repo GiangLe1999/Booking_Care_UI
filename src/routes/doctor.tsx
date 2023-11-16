@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { getDoctor } from "../service/doctor.service";
 import { DetailedDoctor } from "../dtos/doctor.dto";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import StyledImage from "../components/styled-image";
 import { arrayBufferToBase64 } from "../utils/bufferToBase64";
 import parse from "html-react-parser";
@@ -10,6 +10,7 @@ import RootFooter from "../components/layout/root-footer";
 import SubHeader from "../components/layout/sub-header";
 
 import DoctorMainInfo from "../components/doctor-page/doctor-main-info";
+import { path } from "../constants";
 
 interface Props {}
 
@@ -113,6 +114,15 @@ const Doctor: FC<Props> = (props): JSX.Element => {
 
       <div className="border-y bg-[#f9f9f9] pb-4">
         <div className="doctor-content">{parse(doctorContent)}</div>
+      </div>
+
+      <div className="bg-[#006e6f] py-3">
+        <div className="container text-sm">
+          <span className="text-white">Cần tỉm hiểm thêm?</span>
+          <Link to={path.FAQ} className="ml-1 font-semibold text-yellow">
+            Xem câu hỏi thường gặp.
+          </Link>
+        </div>
       </div>
       <RootFooter />
     </>

@@ -64,7 +64,7 @@ const ManageSpecialty: FC<Props> = (props): JSX.Element => {
               twoLang={true}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              inputCustomClasses="bg-transparent border-[#cccccc] rounded !py-[7px]"
+              inputCustomClasses="bg-transparent border-[#cccccc] rounded-[5px] !py-[6px]"
             />
 
             <label

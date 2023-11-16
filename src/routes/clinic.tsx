@@ -7,12 +7,13 @@ import StyledImage from "../components/styled-image";
 import { arrayBufferToBase64 } from "../utils/bufferToBase64";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
+import { getDoctorsByClinic } from "../service/doctor.service";
+import DoctorCard from "../components/doctor-card";
 
 interface Props {}
 
 const Clinic: FC<Props> = (props): JSX.Element => {
   const [headings, setHeadings] = useState<HTMLHeadElement[]>([]);
-  console.log(headings);
 
   const [currentHeadingID, setCurrentHeadingID] = useState<
     string | undefined
@@ -27,6 +28,7 @@ const Clinic: FC<Props> = (props): JSX.Element => {
   const [clinicLogo, setClinicLogo] = useState("");
 
   const [clinic, setClinic] = useState<DetailedClinic>();
+  const [clinicDoctors, setClinicDoctors] = useState<any>();
 
   const fetchClinic = async () => {
     const res = await getClinic(id as string);
@@ -36,8 +38,22 @@ const Clinic: FC<Props> = (props): JSX.Element => {
     }
   };
 
+  const fetchClinicDoctors = async () => {
+    const res = await getDoctorsByClinic(id as string);
+
+    if (res.ok && res.doctors) {
+      setClinicDoctors(res.doctors);
+    }
+  };
+
+  console.log(clinicDoctors);
+
+  const fetchData = () => {
+    Promise.all([fetchClinic(), fetchClinicDoctors()]);
+  };
+
   useEffect(() => {
-    fetchClinic();
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -172,7 +188,7 @@ const Clinic: FC<Props> = (props): JSX.Element => {
           chất lượng cao.
         </div>
 
-        <div className="bg-[#d4effc] p-5 rounded mt-5">
+        <div className="bg-[#d4effc] p-5 rounded my-5">
           Từ nay, người bệnh có thể đặt lịch tại Khu khám bệnh theo yêu cầu,
           Bệnh viện Hữu nghị Việt Đức thông qua hệ thống đặt khám BookingCare.
           <ul className="ml-10 list-disc mt-3">
@@ -189,6 +205,19 @@ const Clinic: FC<Props> = (props): JSX.Element => {
             <li>Nhận được hướng dẫn chi tiết sau khi đặt lịch</li>
           </ul>
         </div>
+
+        {clinicDoctors?.length > 0 && (
+          <div className="mb-14">
+            <h2 className="text-[#337ab7] text-lg font-bold mt-10 mb-4 uppercase">
+              Đặt khám
+            </h2>
+            <div className="space-y-3">
+              {clinicDoctors?.map((doctor: any) => (
+                <DoctorCard doctor={doctor} key={doctor?.User?.id} />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="content clinic-content">{parse(clinicDescription)}</div>
       </div>

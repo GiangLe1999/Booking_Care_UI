@@ -29,6 +29,7 @@ export interface SaveDoctorInfoInput {
   paymentId: string;
   provinceId?: string;
   specialtyId?: string;
+  clinicId?: string;
   clinicAddress?: string;
   clinicName: string;
   note?: string;
@@ -47,6 +48,8 @@ export interface DetailedDoctor extends FetchedDoctor {
     priceTypeData: { valueEn: string; valueVi: string };
     provinceId?: string;
     provinceTypeData?: { valueEn: string; valueVi: string };
+    Specialty: { id: number; name: string };
+    Clinic: { id: number; name: string };
   };
   positionData: {
     valueEn: string;

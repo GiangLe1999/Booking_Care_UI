@@ -120,3 +120,17 @@ export const getDoctorsBySpecialty = async (
     };
   }
 };
+
+export const getDoctorsByClinic = async (clinicId: string) => {
+  try {
+    const { data } = await axios(
+      `/api/get-doctors-by-clinic?clinicId=${clinicId}`
+    );
+    return data;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};

@@ -1,3 +1,4 @@
+import { getAllClinics } from "../service/clinic.service";
 import { getAllDoctors } from "../service/doctor.service";
 import { getAllSpecialties } from "../service/specialty.service";
 
@@ -24,5 +25,18 @@ export const formatSpecialtiesDataForSelect = async () => {
     }));
 
     return formattedSpecialties as { label: string; value: string }[];
+  }
+};
+
+export const formatClinicsDataForSelect = async () => {
+  const res = await getAllClinics();
+
+  if (res.clinics) {
+    const formattedClinics = res.clinics.map((clinic) => ({
+      label: clinic.name,
+      value: clinic.id.toString(),
+    }));
+
+    return formattedClinics as { label: string; value: string }[];
   }
 };

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import DoctorProtectedPage from "../containers/doctor-protected-page";
 import { FormattedMessage } from "react-intl";
-import { formatDoctorsDataForSelect } from "../utils/formatDoctorsDataForSelect";
+import { formatDoctorsDataForSelect } from "../utils/formatDataForSelect";
 import Select from "react-select";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/airbnb.css";
