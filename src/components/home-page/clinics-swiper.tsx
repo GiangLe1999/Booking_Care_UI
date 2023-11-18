@@ -10,6 +10,7 @@ import { arrayBufferToBase64 } from "../../utils/bufferToBase64";
 import { Link } from "react-router-dom";
 import { getAllClinics } from "../../service/clinic.service";
 import { FetchedClinic } from "../../dtos/clinic.dto";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 export default function ClinicsSwiper() {
   const [clinics, setClinics] = useState<FetchedClinic[]>([]);
@@ -32,16 +33,20 @@ export default function ClinicsSwiper() {
   }, []);
 
   return (
-    <>
+    <div className="relative">
       <Swiper
-        navigation={true}
         modules={[Navigation]}
-        className="specialties-swiper"
+        className="clinics-swiper"
         spaceBetween={15}
         slidesPerView={3}
         slidesPerGroup={4}
         speed={800}
+        loop={true}
         loopAdditionalSlides={0}
+        navigation={{
+          nextEl: ".clinics-swiper-button-next",
+          prevEl: ".clinics-swiper-button-prev",
+        }}
       >
         {clinics.map((clinic) => (
           <SwiperSlide key={clinic.id}>
@@ -69,6 +74,13 @@ export default function ClinicsSwiper() {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+
+      <i className="icon-arrow-long-right clinics-swiper-button-next">
+        <GoChevronRight className="text-[#34929e]" size={30} />
+      </i>
+      <i className="icon-arrow-long-left clinics-swiper-button-prev">
+        <GoChevronLeft className="text-[#34929e]" size={30} />
+      </i>
+    </div>
   );
 }

@@ -21,6 +21,7 @@ import ManageClinic from "./routes/manage-clinic";
 import ManageSpecialty from "./routes/manage-specialty";
 import Specialty from "./routes/specialty";
 import Clinic from "./routes/clinic";
+import ManagePatient from "./routes/manage-patient";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
       { path: "manage-schedule", element: <ManageSchedule /> },
       { path: "manage-clinic", element: <ManageClinic /> },
       { path: "manage-specialty", element: <ManageSpecialty /> },
+      { path: "manage-patient", element: <ManagePatient /> },
     ],
   },
 ]);

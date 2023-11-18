@@ -92,7 +92,8 @@
       "manage-specialty": "Quản lý chuyên khoa",
       "handbook": "Cẩm nang",
       "manage-handbook": "Quản lý cẩm nang",
-      "manage-schedule": "Quản lý lịch khám"
+      "manage-schedule": "Quản lý lịch khám",
+      "manage-patient": "Quản lý người khám bệnh"
     }
   },
   "button": {
@@ -174,6 +175,14 @@
     "choose-address": "Địa chỉ phòng khám",
     "thumbnail-ratio": "Tỉ lệ ảnh (16/9)",
     "cover-ratio": "Tỉ lệ ảnh (2.41)"
+  },
+  "manage-patient": {
+    "time": "Thời gian",
+    "fullName": "Họ và tên",
+    "address": "Địa chỉ",
+    "gender": "Giới tính",
+    "status": "Trạng thái",
+    "confirm": "Xác nhận và gủi file hóa đơn"
   },
   "rightsidebar": {
     "calendar": "Lịch hẹn đã đặt",

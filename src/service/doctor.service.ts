@@ -134,3 +134,43 @@ export const getDoctorsByClinic = async (clinicId: string) => {
     };
   }
 };
+
+export const getPatientsByDoctor = async (doctorId: string, date: string) => {
+  try {
+    const { data } = await axios(
+      `/api/get-patients-by-doctor?doctorId=${doctorId}&date=${date}`
+    );
+    return data;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};
+
+export const sendBill = async (
+  email: string,
+  doctorId: number,
+  patientId: number,
+  timeType: string,
+  file: any,
+  patientName: string
+) => {
+  try {
+    const { data } = await axios.post(`/api/send-bill`, {
+      email,
+      doctorId,
+      patientId,
+      timeType,
+      file,
+      patientName,
+    });
+    return data;
+  } catch (error: any) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};

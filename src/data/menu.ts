@@ -152,6 +152,10 @@ export const doctorMenuItems: AdminMenuItems = [
         name: "manage-schedule",
         link: path.MANAGE_SCHEDULE,
       },
+      {
+        name: "manage-patient",
+        link: path.MANAGE_PATIENT,
+      },
     ],
   },
 ];

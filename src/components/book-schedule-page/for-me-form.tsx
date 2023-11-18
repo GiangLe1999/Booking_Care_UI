@@ -8,7 +8,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
 import BtnWithLoading from "../btn-with-loading";
 import { FaPlusCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { path } from "../../constants";
 import { MdEmail } from "react-icons/md";
 import { CoreOutput } from "../../dtos/common.dto";
@@ -53,6 +53,7 @@ const ForMeForm: FC<Props> = ({
 }): JSX.Element => {
   const [gender, setGender] = useState("male");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -84,13 +85,12 @@ const ForMeForm: FC<Props> = ({
         gender,
       });
 
-      console.log(data);
-
       setIsLoading(false);
 
       if (!data.ok) {
         return toast.error(data.error);
       } else {
+        navigate("/", { replace: true });
         return toast.success("Đặt lịch thành công");
       }
     } catch (error: any) {

@@ -1,6 +1,7 @@
 import { CoreOutput } from "./common.dto";
 
 export interface LoggedinUser {
+  id: number;
   email: string;
   roleId: string;
 }

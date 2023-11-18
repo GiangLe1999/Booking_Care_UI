@@ -8,7 +8,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
 import BtnWithLoading from "../btn-with-loading";
 import { FaPlusCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { path } from "../../constants";
 import { MdEmail } from "react-icons/md";
 import { bookSchedule } from "../../service/patient.service";
@@ -51,6 +51,7 @@ const ForFamilyForm: FC<Props> = ({
   doctorName,
   time,
 }): JSX.Element => {
+  const navigate = useNavigate();
   const [gender, setGender] = useState("male");
   const [patientPhone, setPatientPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -90,6 +91,7 @@ const ForFamilyForm: FC<Props> = ({
       if (!data.ok) {
         return toast.error(data.error);
       } else {
+        navigate("/", { replace: true });
         return toast.success("Đặt lịch thành công");
       }
     } catch (error: any) {

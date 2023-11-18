@@ -89,7 +89,8 @@
       "manage-specialty": "Manage specialty",
       "handbook": "Handbook",
       "manage-handbook": "Manage handbook",
-      "manage-schedule": "Manage schedule"
+      "manage-schedule": "Manage schedule",
+      "manage-patient": "Manage patient"
     }
   },
   "button": {
@@ -172,6 +173,14 @@
     "choose-address": "Clinic address",
     "thumbnail-ratio": "Image ratio (16/9)",
     "cover-ratio": "Image ratio (2.41)"
+  },
+  "manage-patient": {
+    "time": "Time",
+    "fullName": "Full name",
+    "address": "Address",
+    "gender": "Gender",
+    "status": "Status",
+    "confirm": "Confirm and send bill file"
   },
   "rightsidebar": {
     "calendar": "Scheduled appointment",
