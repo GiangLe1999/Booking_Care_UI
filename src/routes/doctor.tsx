@@ -12,6 +12,7 @@ import SubHeader from "../components/layout/sub-header";
 import DoctorMainInfo from "../components/doctor-page/doctor-main-info";
 import { path } from "../constants";
 import LikeAndShare from "../components/like-and-share";
+import Comments from "../components/comments";
 
 interface Props {}
 
@@ -90,7 +91,10 @@ const Doctor: FC<Props> = (props): JSX.Element => {
           <div className="doctor-description">
             {parse(doctorDescription)}
             <div className="mt-2">
-              <LikeAndShare />
+              <LikeAndShare
+                href={`${process.env.REACT_APP_BASE_URL}`}
+                testHref={`https://test1.com.vn/${doctor?.id}`}
+              />
             </div>
           </div>
         </div>
@@ -129,6 +133,13 @@ const Doctor: FC<Props> = (props): JSX.Element => {
             Xem câu hỏi thường gặp.
           </Link>
         </div>
+      </div>
+
+      <div className="my-10 page-container">
+        <Comments
+          href={`${process.env.REACT_APP_BASE_URL}`}
+          testHref={`https://test1.com.vn/${doctor?.id}`}
+        />
       </div>
       <RootFooter />
     </>

@@ -6,7 +6,7 @@ interface Props {
   testHref: string;
 }
 
-const LikeAndShare: FC<Props> = ({ href, testHref }): JSX.Element => {
+const Comments: FC<Props> = ({ href, testHref }): JSX.Element => {
   const currentLanguage = useGetLanguage();
 
   const initFacebookSDK = () => {
@@ -42,17 +42,14 @@ const LikeAndShare: FC<Props> = ({ href, testHref }): JSX.Element => {
 
   return (
     <div
-      className="fb-like"
+      className="fb-comments"
       data-href={
         process.env.REACT_APP_IS_LOCALHOST === "true" ? testHref : href
       }
-      data-width=""
-      data-layout=""
-      data-action=""
-      data-size=""
-      data-share="true"
+      data-width="100%"
+      data-numposts="5"
     ></div>
   );
 };
 
-export default LikeAndShare;
+export default Comments;
