@@ -1,19 +1,15 @@
 import { FC, useEffect } from "react";
-import { useGetLanguage } from "../hooks/useGetLanguage";
 
 interface Props {
   href: string;
 }
 
 const LikeAndShare: FC<Props> = ({ href }): JSX.Element => {
-  const currentLanguage = useGetLanguage();
-
   const initFacebookSDK = () => {
     if (window && (window as any).FB) {
       (window as any).FB.XFBML.parse();
     }
 
-    let locale = currentLanguage === "vi" ? "vi_VN" : "en_US";
     (window as any).fbAsyncInit = function () {
       (window as any).FB.init({
         appId: process.env.REACT_APP_FACEBOOK_ID,
@@ -30,14 +26,14 @@ const LikeAndShare: FC<Props> = ({ href }): JSX.Element => {
       if (d.getElementById(id)) return;
       js = d.createElement(s);
       js.id = id;
-      (js as any).src = `//connect.facebook.net/${locale}/sdk.js`;
+      (js as any).src = `//connect.facebook.net/vi_VN/sdk.js`;
       (fjs as any).parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
   };
 
   useEffect(() => {
     initFacebookSDK();
-  }, [currentLanguage]);
+  }, []);
 
   return (
     <div
