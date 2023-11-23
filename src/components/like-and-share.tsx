@@ -3,10 +3,9 @@ import { useGetLanguage } from "../hooks/useGetLanguage";
 
 interface Props {
   href: string;
-  testHref: string;
 }
 
-const LikeAndShare: FC<Props> = ({ href, testHref }): JSX.Element => {
+const LikeAndShare: FC<Props> = ({ href }): JSX.Element => {
   const currentLanguage = useGetLanguage();
 
   const initFacebookSDK = () => {
@@ -43,9 +42,7 @@ const LikeAndShare: FC<Props> = ({ href, testHref }): JSX.Element => {
   return (
     <div
       className="fb-like"
-      data-href={
-        process.env.REACT_APP_IS_LOCALHOST === "true" ? testHref : href
-      }
+      data-href={href}
       data-width=""
       data-layout=""
       data-action=""

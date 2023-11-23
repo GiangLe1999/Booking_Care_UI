@@ -93,7 +93,6 @@ const Doctor: FC<Props> = (props): JSX.Element => {
             <div className="mt-2">
               <LikeAndShare
                 href={`${process.env.REACT_APP_BASE_URL}/user/${doctor?.id}`}
-                testHref={`https://test1.com.vn/${doctor?.id}`}
               />
             </div>
           </div>
@@ -138,7 +137,6 @@ const Doctor: FC<Props> = (props): JSX.Element => {
       <div className="my-10 page-container">
         <Comments
           href={`${process.env.REACT_APP_BASE_URL}/user/${doctor?.id}`}
-          testHref={`https://test1.com.vn/${doctor?.id}`}
         />
       </div>
       <RootFooter />
