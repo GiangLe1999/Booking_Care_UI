@@ -267,19 +267,10 @@ html *::-webkit-scrollbar-track {
 }
 
 /* Top Doctors Swiper */
-.top-doctors-swiper {
-  @apply !px-16;
-}
-
 .top-doctors-swiper .swiper-button-prev,
 .top-doctors-swiper .swiper-button-next {
   @apply bg-white w-10 h-10 rounded-lg border border-[#34929e] -translate-y-[23px];
   box-shadow: rgb(201, 236, 240) 2px 2px 5px;
-}
-
-.top-doctors-swiper .swiper-button-next::after,
-.top-doctors-swiper .swiper-button-prev::after {
-  @apply text-[#34929e] scale-[0.4];
 }
 
 .specialties-swiper-button-next,
@@ -370,4 +361,15 @@ html *::-webkit-scrollbar-track {
     rgba(255, 255, 255, 0.9),
     rgba(255, 255, 255, 1)
   );
+}
+
+/* Facebook like */
+.plugin,
+.plugin button,
+.plugin input,
+.plugin label,
+.plugin select,
+.plugin td,
+.plugin textarea {
+  @apply !text-white;
 }

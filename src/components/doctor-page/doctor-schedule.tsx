@@ -32,6 +32,8 @@ const DoctorSchedule: FC<Props> = ({
     moment().startOf("day").locale("vi").valueOf()
   );
 
+  console.log(doctorId);
+
   const bookScheduleHandler = (time: string, timeType: string) => {
     navigate(`/dat-lich-kham/${moment(currentDate).valueOf()}`, {
       state: {

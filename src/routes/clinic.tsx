@@ -46,8 +46,6 @@ const Clinic: FC<Props> = (props): JSX.Element => {
     }
   };
 
-  console.log(clinicDoctors);
-
   const fetchData = () => {
     Promise.all([fetchClinic(), fetchClinicDoctors()]);
   };

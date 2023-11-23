@@ -11,6 +11,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import CreateUserForm from "../components/manage-user/create-user-form";
 import { FormattedMessage } from "react-intl";
+import AdminProtectedPage from "../containers/admin-protected-page";
 
 interface Props {}
 
@@ -30,7 +31,7 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
     fetchAllUsers();
   }, []);
   return (
-    <ProtectedPage>
+    <AdminProtectedPage>
       <div className="admin-page-container">
         {isLoading ? (
           <div>
@@ -68,7 +69,7 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
           </>
         )}
       </div>
-    </ProtectedPage>
+    </AdminProtectedPage>
   );
 };
 

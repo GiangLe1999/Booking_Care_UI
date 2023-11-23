@@ -9,8 +9,8 @@ interface Props {}
 const TopDoctors: FC<Props> = (props): JSX.Element => {
   return (
     <div>
-      <div>
-        <div className="flex items-center justify-between mb-10 container">
+      <div className="container">
+        <div className="flex items-center justify-between mb-10">
           <h2 className="section-title">
             <FormattedMessage id="homesections.top-doctors" />
           </h2>

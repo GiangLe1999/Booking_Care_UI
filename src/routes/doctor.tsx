@@ -11,6 +11,7 @@ import SubHeader from "../components/layout/sub-header";
 
 import DoctorMainInfo from "../components/doctor-page/doctor-main-info";
 import { path } from "../constants";
+import LikeAndShare from "../components/like-and-share";
 
 interface Props {}
 
@@ -86,7 +87,12 @@ const Doctor: FC<Props> = (props): JSX.Element => {
             alt={`Bác sĩ ${doctor?.firstName} ${doctor?.lastName}`}
           />
 
-          <div className="doctor-description">{parse(doctorDescription)}</div>
+          <div className="doctor-description">
+            {parse(doctorDescription)}
+            <div className="mt-2">
+              <LikeAndShare />
+            </div>
+          </div>
         </div>
       </div>
 
