@@ -4,9 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
 import { FetchedDoctor } from "../../dtos/doctor.dto";
-import { getTopDoctors } from "../../service/doctor.service";
 import StyledImage from "../styled-image";
 import { arrayBufferToBase64 } from "../../utils/bufferToBase64";
 import { Link } from "react-router-dom";
@@ -14,30 +12,16 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
-export default function TopDoctorsSwiper() {
-  const [doctors, setDoctors] = useState<FetchedDoctor[]>([]);
+interface Props {
+  doctors: FetchedDoctor[];
+  isLoadingDoctors: boolean;
+}
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchDoctors = async () => {
-    setIsLoading(true);
-    const res = await getTopDoctors(20);
-
-    if (res.doctors) {
-      setDoctors(res.doctors);
-    }
-
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchDoctors();
-  }, []);
-
+export default function TopDoctorsSwiper({ doctors, isLoadingDoctors }: Props) {
   return (
     <>
       <div className="relative">
-        {isLoading ? (
+        {isLoadingDoctors ? (
           <div className="grid grid-cols-4 gap-4 w-full h-[200px]">
             {[...Array(4).keys()].map((item, index) => (
               <SwiperSlide key={index}>

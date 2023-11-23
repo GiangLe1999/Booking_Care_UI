@@ -3,10 +3,17 @@ import { BiSolidChevronsRight } from "react-icons/bi";
 import { FormattedMessage } from "react-intl";
 import BtnWithIcon from "../btn-with-icon";
 import SpecialtiesSwiper from "./specialties-swiper";
+import { FetchedSpecialty } from "../../dtos/specialty.dto";
 
-interface Props {}
+interface Props {
+  specialties: FetchedSpecialty[];
+  isLoadingSpecialties: boolean;
+}
 
-const Specialties: FC<Props> = (props): JSX.Element => {
+const Specialties: FC<Props> = ({
+  specialties,
+  isLoadingSpecialties,
+}): JSX.Element => {
   return (
     <div className="container">
       <div className="flex items-center justify-between mb-10">
@@ -17,7 +24,10 @@ const Specialties: FC<Props> = (props): JSX.Element => {
         <BtnWithIcon content="see-more" iconBehind={BiSolidChevronsRight} />
       </div>
 
-      <SpecialtiesSwiper />
+      <SpecialtiesSwiper
+        specialties={specialties}
+        isLoadingSpecialties={isLoadingSpecialties}
+      />
     </div>
   );
 };

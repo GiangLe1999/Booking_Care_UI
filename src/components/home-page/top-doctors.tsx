@@ -3,10 +3,14 @@ import { FormattedMessage } from "react-intl";
 import BtnWithIcon from "../btn-with-icon";
 import { BiSolidChevronsRight } from "react-icons/bi";
 import TopDoctorsSwiper from "./top-doctors-swiper";
+import { FetchedDoctor } from "../../dtos/doctor.dto";
 
-interface Props {}
+interface Props {
+  doctors: FetchedDoctor[];
+  isLoadingDoctors: boolean;
+}
 
-const TopDoctors: FC<Props> = (props): JSX.Element => {
+const TopDoctors: FC<Props> = ({ doctors, isLoadingDoctors }): JSX.Element => {
   return (
     <div>
       <div className="container">
@@ -18,7 +22,10 @@ const TopDoctors: FC<Props> = (props): JSX.Element => {
           <BtnWithIcon content="see-more" iconBehind={BiSolidChevronsRight} />
         </div>
 
-        <TopDoctorsSwiper />
+        <TopDoctorsSwiper
+          doctors={doctors}
+          isLoadingDoctors={isLoadingDoctors}
+        />
       </div>
     </div>
   );

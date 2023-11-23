@@ -3,10 +3,14 @@ import { FormattedMessage } from "react-intl";
 import BtnWithIcon from "../btn-with-icon";
 import { BiSolidChevronsRight } from "react-icons/bi";
 import ClinicsSwiper from "./clinics-swiper";
+import { FetchedClinic } from "../../dtos/clinic.dto";
 
-interface Props {}
+interface Props {
+  clinics: FetchedClinic[];
+  isLoadingClinics: boolean;
+}
 
-const Clinics: FC<Props> = (props): JSX.Element => {
+const Clinics: FC<Props> = ({ clinics, isLoadingClinics }): JSX.Element => {
   return (
     <div className="container">
       <div className="flex items-center justify-between mb-10">
@@ -17,7 +21,7 @@ const Clinics: FC<Props> = (props): JSX.Element => {
         <BtnWithIcon content="see-more" iconBehind={BiSolidChevronsRight} />
       </div>
 
-      <ClinicsSwiper />
+      <ClinicsSwiper clinics={clinics} isLoadingClinics={isLoadingClinics} />
     </div>
   );
 };

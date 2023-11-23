@@ -14,28 +14,15 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
-export default function ClinicsSwiper() {
-  const [clinics, setClinics] = useState<FetchedClinic[]>([]);
+interface Props {
+  clinics: FetchedClinic[];
+  isLoadingClinics: boolean;
+}
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchClinics = async () => {
-    setIsLoading(true);
-    const res = await getAllClinics();
-
-    if (res.clinics) {
-      setIsLoading(false);
-      setClinics(res.clinics);
-    }
-  };
-
-  useEffect(() => {
-    fetchClinics();
-  }, []);
-
+export default function ClinicsSwiper({ clinics, isLoadingClinics }: Props) {
   return (
     <div className="relative">
-      {isLoading ? (
+      {isLoadingClinics ? (
         <div className="grid grid-cols-3 gap-4 w-full h-[200px]">
           {[...Array(3).keys()].map((item, index) => (
             <SwiperSlide key={index}>
@@ -59,7 +46,7 @@ export default function ClinicsSwiper() {
         >
           {clinics.map((clinic) => (
             <SwiperSlide key={clinic.id}>
-              {isLoading ? (
+              {isLoadingClinics ? (
                 <Skeleton
                   count={1}
                   className="w-full aspect-[1.5] rounded-md"

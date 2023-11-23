@@ -4,39 +4,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
 import StyledImage from "../styled-image";
 import { arrayBufferToBase64 } from "../../utils/bufferToBase64";
 import { Link } from "react-router-dom";
 import { FetchedSpecialty } from "../../dtos/specialty.dto";
-import { getAllSpecialties } from "../../service/specialty.service";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
-export default function SpecialtiesSwiper() {
-  const [specialties, setSpecialties] = useState<FetchedSpecialty[]>([]);
+interface Props {
+  specialties: FetchedSpecialty[];
+  isLoadingSpecialties: boolean;
+}
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchSpecialties = async () => {
-    setIsLoading(true);
-    const res = await getAllSpecialties();
-
-    if (res.specialties) {
-      setSpecialties(res.specialties);
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchSpecialties();
-  }, []);
-
+export default function SpecialtiesSwiper({
+  specialties,
+  isLoadingSpecialties,
+}: Props) {
   return (
     <>
       <div className="relative">
-        {isLoading ? (
+        {isLoadingSpecialties ? (
           <div className="grid grid-cols-3 gap-4 w-full h-[200px]">
             {[...Array(3).keys()].map((item, index) => (
               <SwiperSlide key={index}>

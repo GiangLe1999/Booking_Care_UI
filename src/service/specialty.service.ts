@@ -24,9 +24,19 @@ export const getAllSpecialties = async (): Promise<GetAllSpecialtiesOutput> => {
     const { data } = await axios.get(`/api/specialties`);
     return data as GetAllSpecialtiesOutput;
   } catch (error) {
-    return { ok: false, error: "Could not load top doctors" };
+    return { ok: false, error: "Could not load specialties" };
   }
 };
+
+export const getHomeSpecialties =
+  async (): Promise<GetAllSpecialtiesOutput> => {
+    try {
+      const { data } = await axios.get(`/api/home-specialties`);
+      return data as GetAllSpecialtiesOutput;
+    } catch (error) {
+      return { ok: false, error: "Could not load specialties" };
+    }
+  };
 
 export const getSpecialty = async (id: string): Promise<GetSpecialtyOutput> => {
   try {

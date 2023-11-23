@@ -22,6 +22,7 @@ import ManageSpecialty from "./routes/manage-specialty";
 import Specialty from "./routes/specialty";
 import Clinic from "./routes/clinic";
 import ManagePatient from "./routes/manage-patient";
+import Specialties from "./routes/specialties";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "verify-booking", element: <VerifyBooking /> },
       { path: "specialty/:id", element: <Specialty /> },
       { path: "clinic/:id", element: <Clinic /> },
+      { path: "chuyen-khoa", element: <Specialties /> },
     ],
   },
 

@@ -25,6 +25,15 @@ export const getAllClinics = async (): Promise<GetAllClinicsOutput> => {
   }
 };
 
+export const getHomeClinics = async (): Promise<GetAllClinicsOutput> => {
+  try {
+    const { data } = await axios.get(`/api/home-clinics`);
+    return data as GetAllClinicsOutput;
+  } catch (error) {
+    return { ok: false, error: "Could not load clinics" };
+  }
+};
+
 export const getClinic = async (id: string): Promise<GetClinicOutput> => {
   try {
     const { data } = await axios.get(`/api/clinic?id=${id}`);

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Searchbar from "../components/home-page/search-bar";
 import { FormattedMessage } from "react-intl";
 import HomeCategories from "../components/home-page/home-categories";
@@ -8,10 +8,66 @@ import TopDoctors from "../components/home-page/top-doctors";
 import RootLayout from "../containers/root-layout";
 import Specialties from "../components/home-page/specialties";
 import Clinics from "../components/home-page/clinics";
+import { FetchedSpecialty } from "../dtos/specialty.dto";
+import {
+  getAllSpecialties,
+  getHomeSpecialties,
+} from "../service/specialty.service";
+import { FetchedClinic } from "../dtos/clinic.dto";
+import { getAllClinics, getHomeClinics } from "../service/clinic.service";
+import { FetchedDoctor } from "../dtos/doctor.dto";
+import { getTopDoctors } from "../service/doctor.service";
 
 interface Props {}
 
-const Home: FC<Props> = (props): JSX.Element => {
+const Home: FC<Props> = (): JSX.Element => {
+  console.log("aha");
+  const [specialties, setSpecialties] = useState<FetchedSpecialty[]>([]);
+  const [isLoadingSpecialties, setIsLoadingSpecialties] = useState(false);
+  const [clinics, setClinics] = useState<FetchedClinic[]>([]);
+  const [isLoadingClinics, setIsLoadingClinics] = useState(false);
+  const [doctors, setDoctors] = useState<FetchedDoctor[]>([]);
+  const [isLoadingDoctors, setIsLoadingDoctors] = useState(false);
+
+  const fetchSpecialties = async () => {
+    setIsLoadingSpecialties(true);
+    const res = await getHomeSpecialties();
+
+    if (res.specialties) {
+      setSpecialties(res.specialties);
+    }
+    setIsLoadingSpecialties(false);
+  };
+
+  const fetchClinics = async () => {
+    setIsLoadingClinics(true);
+    const res = await getHomeClinics();
+
+    if (res.clinics) {
+      setIsLoadingClinics(false);
+      setClinics(res.clinics);
+    }
+  };
+
+  const fetchDoctors = async () => {
+    setIsLoadingDoctors(true);
+    const res = await getTopDoctors(20);
+
+    if (res.doctors) {
+      setDoctors(res.doctors);
+    }
+
+    setIsLoadingDoctors(false);
+  };
+
+  const fetchData = () => {
+    Promise.all([fetchSpecialties(), fetchDoctors(), fetchClinics()]);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <RootLayout>
       <div>
@@ -38,15 +94,18 @@ const Home: FC<Props> = (props): JSX.Element => {
         </div>
 
         <div className="pt-10 pb-16">
-          <Specialties />
+          <Specialties
+            specialties={specialties}
+            isLoadingSpecialties={isLoadingSpecialties}
+          />
         </div>
 
         <div className="pt-10 pb-16">
-          <Clinics />
+          <Clinics clinics={clinics} isLoadingClinics={isLoadingClinics} />
         </div>
 
         <div className="has-bg-section-1">
-          <TopDoctors />
+          <TopDoctors doctors={doctors} isLoadingDoctors={isLoadingDoctors} />
         </div>
 
         <div className="py-10 px-4">
