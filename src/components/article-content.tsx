@@ -10,6 +10,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import TOC from "./toc";
 import moment from "moment";
+import LikeAndShare from "./like-and-share";
+import Comments from "./comments";
 
 interface Props {
   belongsTo: string;
@@ -105,12 +107,36 @@ const ArticleContent: FC<Props> = ({ belongsTo, article }): JSX.Element => {
             <div className="content prose prose-headings:!font-semibold prose-strong:font-semibold prose-h2:text-xl prose-h3:text-lg prose-headings:!text-title_text">
               {parse(article?.content || "")}
             </div>
+
+            <div className="mt-8">
+              <LikeAndShare
+                href={`${process.env.REACT_APP_BASE_URL}${
+                  belongsTo === "Cẩm nang"
+                    ? path.HANDBOOK
+                    : belongsTo === "Sống khỏe"
+                    ? path.LONGLIVE
+                    : path.TIP
+                }/${article?.slug}`}
+              />
+            </div>
           </div>
         </div>
 
         <div className="flex-1 sticky block top-14 max-h-screen">
           {article && <TOC selector=".content" />}
         </div>
+      </div>
+
+      <div className="my-10 page-container">
+        <Comments
+          href={`${process.env.REACT_APP_BASE_URL}${
+            belongsTo === "Cẩm nang"
+              ? path.HANDBOOK
+              : belongsTo === "Sống khỏe"
+              ? path.LONGLIVE
+              : path.TIP
+          }/${article?.slug}`}
+        />
       </div>
     </div>
   );
