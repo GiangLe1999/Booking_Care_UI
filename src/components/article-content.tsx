@@ -118,6 +118,16 @@ const ArticleContent: FC<Props> = ({ belongsTo, article }): JSX.Element => {
                     : path.TIP
                 }/${article?.slug}`}
               />
+
+              <Comments
+                href={`${process.env.REACT_APP_BASE_URL}${
+                  belongsTo === "Cẩm nang"
+                    ? path.HANDBOOK
+                    : belongsTo === "Sống khỏe"
+                    ? "/song-khoe"
+                    : path.TIP
+                }/${article?.slug}`}
+              />
             </div>
           </div>
         </div>
@@ -125,18 +135,6 @@ const ArticleContent: FC<Props> = ({ belongsTo, article }): JSX.Element => {
         <div className="flex-1 sticky block top-14 max-h-screen">
           {article && <TOC selector=".content" />}
         </div>
-      </div>
-
-      <div className="my-10 page-container">
-        <Comments
-          href={`${process.env.REACT_APP_BASE_URL}${
-            belongsTo === "Cẩm nang"
-              ? path.HANDBOOK
-              : belongsTo === "Sống khỏe"
-              ? path.LONGLIVE
-              : path.TIP
-          }/${article?.slug}`}
-        />
       </div>
     </div>
   );
