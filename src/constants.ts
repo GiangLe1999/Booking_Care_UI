@@ -10,7 +10,10 @@ export const path = {
   MANAGE_SCHEDULE: "/system/manage-schedule",
   MANAGE_CLINIC: "/system/manage-clinic",
   MANAGE_SPECIALTY: "/system/manage-specialty",
+  MANAGE_HANDBOOK: "/system/manage-handbook",
   MANAGE_PATIENT: "/system/manage-patient",
+  MANAGE_LONGLIVE: "/system/manage-longlive",
+  MANAGE_TIPS: "/system/manage-tips",
 
   // Frontend
   SPECIALITY: "/chuyen-khoa",
@@ -19,6 +22,7 @@ export const path = {
   PACKAGE: "/dich-vu-y-te/kham-tong-quat",
   SUPPORT: "/ho-tro",
   HANDBOOK: "/cam-nang",
+  LONGLIVE: "/song-khoe-suot-doi",
   CO_OPERATE: "/hop-tac",
   FOR_COMPANY: "/suc-khoe-doanh-nghiep",
   PACKAGE_FOR_COMPANY: "/goi-chuyen-doi-so",

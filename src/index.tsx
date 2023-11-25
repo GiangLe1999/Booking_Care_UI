@@ -23,6 +23,11 @@ import Specialty from "./routes/specialty";
 import Clinic from "./routes/clinic";
 import ManagePatient from "./routes/manage-patient";
 import Specialties from "./routes/specialties";
+import Clinics from "./routes/clinics";
+import Doctors from "./routes/doctors";
+import ManageHanbook from "./routes/manage-handbook";
+import ManageLonglive from "./routes/manage-longlive";
+import ManageTips from "./routes/manage-tips";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +40,8 @@ const router = createBrowserRouter([
       { path: "specialty/:id", element: <Specialty /> },
       { path: "clinic/:id", element: <Clinic /> },
       { path: "chuyen-khoa", element: <Specialties /> },
+      { path: "co-so-y-te/tat-ca", element: <Clinics /> },
+      { path: "bac-si", element: <Doctors /> },
     ],
   },
 
@@ -53,6 +60,9 @@ const router = createBrowserRouter([
       { path: "manage-clinic", element: <ManageClinic /> },
       { path: "manage-specialty", element: <ManageSpecialty /> },
       { path: "manage-patient", element: <ManagePatient /> },
+      { path: "manage-handbook", element: <ManageHanbook /> },
+      { path: "manage-longlive", element: <ManageLonglive /> },
+      { path: "manage-tips", element: <ManageTips /> },
     ],
   },
 ]);

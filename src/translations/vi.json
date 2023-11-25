@@ -90,10 +90,12 @@
       "manage-clinic": "Quản lý phòng khám",
       "specialty": "Chuyên khoa",
       "manage-specialty": "Quản lý chuyên khoa",
-      "handbook": "Cẩm nang",
+      "article": "Bài viết",
       "manage-handbook": "Quản lý cẩm nang",
+      "manage-longlive": "Quản lý sống khỏe",
       "manage-schedule": "Quản lý lịch khám",
-      "manage-patient": "Quản lý người khám bệnh"
+      "manage-patient": "Quản lý người khám bệnh",
+      "manage-tips": "Quản lý bài viết tips"
     }
   },
   "button": {
@@ -176,6 +178,21 @@
     "thumbnail-ratio": "Tỉ lệ ảnh (16/9)",
     "cover-ratio": "Tỉ lệ ảnh (2.41)"
   },
+  "manage-handbook": {
+    "title": "Quản lý bài viết cẩm nang",
+    "choose-title": "Tiêu đề",
+    "choose-description": "Mô tả",
+    "content": "Nội dung",
+    "slug": "Đường dẫn",
+    "choose-thumbnail": "Chọn thumbnail",
+    "thumbnail-ratio": "Tỉ lệ ảnh (16/9)"
+  },
+  "manage-longlive": {
+    "title": "Quản lý bài viết sống khỏe"
+  },
+  "manage-tips": {
+    "title": "Quản lý bài viết dành cho bác sĩ & phòng khám"
+  },
   "manage-patient": {
     "time": "Thời gian",
     "fullName": "Họ và tên",
@@ -191,7 +208,10 @@
   "homesections": {
     "top-doctors": "Bác sĩ nổi bật",
     "specialties": "Chuyên khoa",
-    "clinics": "Cơ sở y tế"
+    "clinics": "Cơ sở y tế",
+    "handbooks": "Cẩm nang",
+    "longlives": "Sống khỏe suốt đời",
+    "tips": "Dành cho bác sĩ và cơ sở y tế"
   },
   "doctor-page": {
     "schedule": "Lịch khám",

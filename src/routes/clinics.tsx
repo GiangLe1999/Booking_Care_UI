@@ -1,27 +1,28 @@
 import { FC, useEffect, useState } from "react";
 import SubHeader from "../components/layout/sub-header";
-import { FetchedSpecialty } from "../dtos/specialty.dto";
-import { getHomeSpecialties } from "../service/specialty.service";
 import { Link } from "react-router-dom";
-import StyledImage from "../components/styled-image";
 import { arrayBufferToBase64 } from "../utils/bufferToBase64";
 import Skeleton from "react-loading-skeleton";
+import { getHomeClinics } from "../service/clinic.service";
+import StyledImage from "../components/styled-image";
+import { FetchedClinic } from "../dtos/clinic.dto";
+import RootFooter from "../components/layout/root-footer";
 
 interface Props {}
 
-const Specialties: FC<Props> = (props): JSX.Element => {
+const Clinics: FC<Props> = (props): JSX.Element => {
   const [showHeading, setShowHeading] = useState(false);
-  const [specialties, setSpecialties] = useState<FetchedSpecialty[]>([]);
-  const [isLoadingSpecialties, setIsLoadingSpecialties] = useState(false);
+  const [clinics, setClinics] = useState<FetchedClinic[]>([]);
+  const [isLoadingClinics, setIsLoadingClinics] = useState(false);
 
-  const fetchSpecialties = async () => {
-    setIsLoadingSpecialties(true);
-    const res = await getHomeSpecialties();
+  const fetchClinics = async () => {
+    setIsLoadingClinics(true);
+    const res = await getHomeClinics();
 
-    if (res.specialties) {
-      setSpecialties(res.specialties);
+    if (res.clinics) {
+      setClinics(res.clinics);
     }
-    setIsLoadingSpecialties(false);
+    setIsLoadingClinics(false);
   };
 
   useEffect(() => {
@@ -42,19 +43,19 @@ const Specialties: FC<Props> = (props): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    fetchSpecialties();
+    fetchClinics();
   }, []);
 
   return (
     <>
-      <SubHeader headingContent={showHeading ? "Khám chuyên khoa" : ""} />
+      <SubHeader headingContent={showHeading ? "Cơ sở y tế nổi bật" : ""} />
       <div className="container mt-24">
         <h1 className="font-semibold text-lg mb-3">
-          Danh sách chuyên khoa dành cho bạn
+          Danh sách cơ sở y tế dành cho bạn
         </h1>
 
         <>
-          {isLoadingSpecialties ? (
+          {isLoadingClinics ? (
             <div className="mb-8">
               {[...Array(10).keys()].map((item, index) => (
                 <Skeleton
@@ -66,7 +67,7 @@ const Specialties: FC<Props> = (props): JSX.Element => {
             </div>
           ) : (
             <div className="mt-4 mb-8">
-              {specialties.map((specialty) => (
+              {clinics.map((specialty) => (
                 <Link
                   to={`/specialty/${specialty.id}`}
                   className="flex gap-4 py-4 border-b border-[#eee]"
@@ -74,8 +75,8 @@ const Specialties: FC<Props> = (props): JSX.Element => {
                 >
                   <StyledImage
                     wrapperClasses="w-[110px] aspect-[1.778] rounded-md overflow-hidden"
-                    src={arrayBufferToBase64(specialty?.image)}
-                    alt={`Chuyên khoa ${specialty?.name}`}
+                    src={arrayBufferToBase64(specialty?.logo)}
+                    alt={`Cơ sở y tế ${specialty?.name}`}
                   />
 
                   <h2>{specialty?.name}</h2>
@@ -85,8 +86,10 @@ const Specialties: FC<Props> = (props): JSX.Element => {
           )}
         </>
       </div>
+
+      <RootFooter />
     </>
   );
 };
 
-export default Specialties;
+export default Clinics;

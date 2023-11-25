@@ -1,41 +1,41 @@
 import { FC } from "react";
-import { BiSolidChevronsRight } from "react-icons/bi";
+import { FetchedArticle } from "../../dtos/articles.dto";
 import { FormattedMessage } from "react-intl";
 import BtnWithIcon from "../btn-with-icon";
-import SpecialtiesSwiper from "./specialties-swiper";
-import { FetchedSpecialty } from "../../dtos/specialty.dto";
+import { BiSolidChevronsRight } from "react-icons/bi";
 import { path } from "../../constants";
+import LonglivesSwiper from "./longlives-swiper";
 
 interface Props {
-  specialties: FetchedSpecialty[];
-  isLoadingSpecialties: boolean;
+  longlives: FetchedArticle[] | undefined;
+  isLoadingLonglives: boolean;
 }
 
-const Specialties: FC<Props> = ({
-  specialties,
-  isLoadingSpecialties,
+const Longlives: FC<Props> = ({
+  longlives,
+  isLoadingLonglives,
 }): JSX.Element => {
   return (
     <div className="container">
       <div className="flex items-center justify-between mb-5">
         <h2 className="section-title">
-          <FormattedMessage id="homesections.specialties" />
+          <FormattedMessage id="homesections.longlives" />
         </h2>
 
         <BtnWithIcon
           content="see-more"
           iconBehind={BiSolidChevronsRight}
-          to={path.SPECIALITY}
+          to={path.LONGLIVE}
           customClasses="!rounded-md after:!rounded-md"
         />
       </div>
 
-      <SpecialtiesSwiper
-        specialties={specialties}
-        isLoadingSpecialties={isLoadingSpecialties}
+      <LonglivesSwiper
+        longlives={longlives}
+        isLoadingLonglives={isLoadingLonglives}
       />
     </div>
   );
 };
 
-export default Specialties;
+export default Longlives;

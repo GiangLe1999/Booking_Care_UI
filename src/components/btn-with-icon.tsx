@@ -47,6 +47,7 @@ const BtnWithIcon: FC<Props> = ({
   return (
     <Component
       href={href}
+      to={to}
       onClick={onClick}
       className={`primary-btn ${customClasses}`}
       type={type}

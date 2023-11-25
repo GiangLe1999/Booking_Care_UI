@@ -9,25 +9,35 @@ import RootLayout from "../containers/root-layout";
 import Specialties from "../components/home-page/specialties";
 import Clinics from "../components/home-page/clinics";
 import { FetchedSpecialty } from "../dtos/specialty.dto";
-import {
-  getAllSpecialties,
-  getHomeSpecialties,
-} from "../service/specialty.service";
+import { getHomeSpecialties } from "../service/specialty.service";
 import { FetchedClinic } from "../dtos/clinic.dto";
-import { getAllClinics, getHomeClinics } from "../service/clinic.service";
+import { getHomeClinics } from "../service/clinic.service";
 import { FetchedDoctor } from "../dtos/doctor.dto";
 import { getTopDoctors } from "../service/doctor.service";
+import Media from "../components/home-page/media";
+import Handbooks from "../components/home-page/handbooks";
+import { getHomeHandbooks } from "../service/handbook.service";
+import { FetchedArticle } from "../dtos/articles.dto";
+import { getHomeLonglives } from "../service/longlive.service";
+import Longlives from "../components/home-page/longlives";
+import { getHomeTips } from "../service/tips.service";
+import Tips from "../components/home-page/tips";
 
 interface Props {}
 
 const Home: FC<Props> = (): JSX.Element => {
-  console.log("aha");
   const [specialties, setSpecialties] = useState<FetchedSpecialty[]>([]);
   const [isLoadingSpecialties, setIsLoadingSpecialties] = useState(false);
   const [clinics, setClinics] = useState<FetchedClinic[]>([]);
   const [isLoadingClinics, setIsLoadingClinics] = useState(false);
   const [doctors, setDoctors] = useState<FetchedDoctor[]>([]);
   const [isLoadingDoctors, setIsLoadingDoctors] = useState(false);
+  const [handbooks, setHandbooks] = useState<FetchedArticle[]>([]);
+  const [isLoadingHandbooks, setIsLoadingHandbooks] = useState(false);
+  const [longlives, setLonglives] = useState<FetchedArticle[]>([]);
+  const [isLoadingLonglives, setIsLoadingLonglives] = useState(false);
+  const [tips, setTips] = useState<FetchedArticle[]>([]);
+  const [isLoadingTips, setIsLoadingTips] = useState(false);
 
   const fetchSpecialties = async () => {
     setIsLoadingSpecialties(true);
@@ -60,12 +70,50 @@ const Home: FC<Props> = (): JSX.Element => {
     setIsLoadingDoctors(false);
   };
 
+  const fetchHandbooks = async () => {
+    setIsLoadingHandbooks(true);
+    const res = await getHomeHandbooks();
+
+    if (res.articles) {
+      setIsLoadingHandbooks(false);
+      setHandbooks(res.articles);
+    }
+  };
+
+  const fetchLonglives = async () => {
+    setIsLoadingLonglives(true);
+    const res = await getHomeLonglives();
+
+    if (res.articles) {
+      setIsLoadingLonglives(false);
+      setLonglives(res.articles);
+    }
+  };
+
+  const fetchTips = async () => {
+    setIsLoadingTips(true);
+    const res = await getHomeTips();
+
+    if (res.articles) {
+      setIsLoadingTips(false);
+      setTips(res.articles);
+    }
+  };
+
   const fetchData = () => {
     Promise.all([fetchSpecialties(), fetchDoctors(), fetchClinics()]);
   };
 
+  const fetchArticlesData = () => {
+    Promise.all([fetchHandbooks(), fetchLonglives(), fetchTips()]);
+  };
+
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    fetchArticlesData();
   }, []);
 
   return (
@@ -100,7 +148,7 @@ const Home: FC<Props> = (): JSX.Element => {
           />
         </div>
 
-        <div className="pt-10 pb-16">
+        <div className="pb-16">
           <Clinics clinics={clinics} isLoadingClinics={isLoadingClinics} />
         </div>
 
@@ -110,6 +158,28 @@ const Home: FC<Props> = (): JSX.Element => {
 
         <div className="py-10 px-4">
           <DownloadApp />
+        </div>
+
+        <div className="has-bg-section-1">
+          <Media />
+        </div>
+
+        <div className="py-10 px-4">
+          <Handbooks
+            handbooks={handbooks}
+            isLoadingHandbooks={isLoadingHandbooks}
+          />
+        </div>
+
+        <div className="py-10 px-4">
+          <Longlives
+            longlives={longlives}
+            isLoadingLonglives={isLoadingLonglives}
+          />
+        </div>
+
+        <div className="py-10 px-4">
+          <Tips tips={tips} isLoadingTips={isLoadingTips} />
         </div>
       </div>
     </RootLayout>

@@ -4,11 +4,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
 import StyledImage from "../styled-image";
 import { arrayBufferToBase64 } from "../../utils/bufferToBase64";
 import { Link } from "react-router-dom";
-import { getAllClinics } from "../../service/clinic.service";
 import { FetchedClinic } from "../../dtos/clinic.dto";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

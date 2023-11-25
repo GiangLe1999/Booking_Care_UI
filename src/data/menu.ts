@@ -50,11 +50,19 @@ export const adminMenuItems: AdminMenuItems = [
   },
 
   {
-    name: "adminheader.admin.handbook",
+    name: "adminheader.admin.article",
     menus: [
       {
         name: "manage-handbook",
-        link: "/system/system-parameter",
+        link: path.MANAGE_HANDBOOK,
+      },
+      {
+        name: "manage-longlive",
+        link: path.MANAGE_LONGLIVE,
+      },
+      {
+        name: "manage-tips",
+        link: path.MANAGE_TIPS,
       },
     ],
   },
@@ -157,5 +165,40 @@ export const doctorMenuItems: AdminMenuItems = [
         link: path.MANAGE_PATIENT,
       },
     ],
+  },
+];
+
+export const mediaItems = [
+  {
+    logo: "vtv1",
+    link: "https://vtv.vn/video/ca-phe-khoi-nghiep-14-11-2018-334894.htm",
+  },
+  {
+    logo: "ictnews",
+    link: "https://vietnamnet.vn/thong-tin-truyen-thong",
+  },
+  {
+    logo: "vnexpress",
+    link: "https://video.vnexpress.net/cuoc-song-4-0/kham-benh-khong-phai-xep-hang-o-ha-noi-3797126.html",
+  },
+  {
+    logo: "vtcnewslogo",
+    link: "https://vtc.vn/dat-kham-chuyen-khoa-va-hanh-trinh-ho-tro-cac-benh-vien-qua-tai-ar434101.html",
+  },
+  {
+    logo: "cuc-cong-nghe-thong-tin-bo-y-te-2",
+    link: "https://ehealth.gov.vn/?action=News&amp;newsId=46094",
+  },
+  {
+    logo: "infonet",
+    link: "https://infonet.vietnamnet.vn/da-co-hon-20000-luot-benh-nhan-dat-lich-kham-qua-bookingcare-175080.html",
+  },
+  {
+    logo: "vtv1",
+    link: "https://vtv.vn/video/ca-phe-khoi-nghiep-16-8-2018-317687.htm",
+  },
+  {
+    logo: "dantri",
+    link: "https://dantri.com.vn/nhan-tai-dat-viet/san-pham-nen-tang-dat-kham-booking-care-201908201625624751.htm",
   },
 ];

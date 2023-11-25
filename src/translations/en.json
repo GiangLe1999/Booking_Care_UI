@@ -87,10 +87,12 @@
       "manage-clinic": "Manage clinic",
       "specialty": "Specialty",
       "manage-specialty": "Manage specialty",
-      "handbook": "Handbook",
+      "article": "Article",
       "manage-handbook": "Manage handbook",
+      "manage-longlive": "Manage long live",
       "manage-schedule": "Manage schedule",
-      "manage-patient": "Manage patient"
+      "manage-patient": "Manage patient",
+      "manage-tips": "Manages tips"
     }
   },
   "button": {
@@ -174,6 +176,21 @@
     "thumbnail-ratio": "Image ratio (16/9)",
     "cover-ratio": "Image ratio (2.41)"
   },
+  "manage-handbook": {
+    "title": "Manage Hanbook",
+    "choose-title": "Title",
+    "choose-thumbnail": "Choose thumbnail",
+    "slug": "Slug",
+    "thumbnail-ratio": "Image ratio (16/9)",
+    "choose-description": "Description",
+    "content": "Content"
+  },
+  "manage-longlive": {
+    "title": "Manage Live healthy for live"
+  },
+  "manage-tips": {
+    "title": "Manage article for doctors and clinics"
+  },
   "manage-patient": {
     "time": "Time",
     "fullName": "Full name",
@@ -189,7 +206,10 @@
   "homesections": {
     "top-doctors": "Outstanding doctors",
     "specialties": "Specialties",
-    "clinics": "Medical facilities"
+    "clinics": "Medical facilities",
+    "handbooks": "Hanbooks",
+    "longlives": "Live healthy for life",
+    "tips": "For doctors and clinics"
   },
   "doctor-page": {
     "schedule": "Schedule",
