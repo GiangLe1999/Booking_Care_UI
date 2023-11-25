@@ -23,6 +23,7 @@ export const path = {
   SUPPORT: "/ho-tro",
   HANDBOOK: "/cam-nang",
   LONGLIVE: "/song-khoe-suot-doi",
+  TIP: "/danh-cho-bac-si",
   CO_OPERATE: "/hop-tac",
   FOR_COMPANY: "/suc-khoe-doanh-nghiep",
   PACKAGE_FOR_COMPANY: "/goi-chuyen-doi-so",

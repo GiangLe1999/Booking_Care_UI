@@ -2,6 +2,7 @@ import axios from "../axios";
 import {
   CreateNewArticleInput,
   GetAllArticlesOutput,
+  GetArticleBySlugOutput,
 } from "../dtos/articles.dto";
 
 export const createNewHandbook = async (
@@ -21,5 +22,16 @@ export const getHomeHandbooks = async (): Promise<GetAllArticlesOutput> => {
     return data as GetAllArticlesOutput;
   } catch (error) {
     return { ok: false, error: "Could not load handbooks" };
+  }
+};
+
+export const getHandbookBySlug = async (
+  slug: string
+): Promise<GetArticleBySlugOutput> => {
+  try {
+    const { data } = await axios.get(`/api/handbook?slug=${slug}`);
+    return data as GetArticleBySlugOutput;
+  } catch (error) {
+    return { ok: false, error: "Could not load handbook" };
   }
 };

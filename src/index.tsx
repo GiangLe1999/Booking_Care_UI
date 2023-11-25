@@ -28,6 +28,9 @@ import Doctors from "./routes/doctors";
 import ManageHanbook from "./routes/manage-handbook";
 import ManageLonglive from "./routes/manage-longlive";
 import ManageTips from "./routes/manage-tips";
+import Handbook from "./routes/handbook";
+import Longlive from "./routes/longlive";
+import Tip from "./routes/tip";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,9 @@ const router = createBrowserRouter([
       { path: "chuyen-khoa", element: <Specialties /> },
       { path: "co-so-y-te/tat-ca", element: <Clinics /> },
       { path: "bac-si", element: <Doctors /> },
+      { path: "cam-nang/:slug", element: <Handbook /> },
+      { path: "song-khoe/:slug", element: <Longlive /> },
+      { path: "danh-cho-bac-si/:slug", element: <Tip /> },
     ],
   },
 

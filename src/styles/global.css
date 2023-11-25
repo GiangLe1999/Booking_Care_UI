@@ -34,6 +34,23 @@ html *::-webkit-scrollbar-track {
   @apply max-w-6xl mx-auto px-4;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  @apply !hidden;
+}
+
+/* Content parsed from HTML */
+figure.image {
+  @apply my-4 w-full;
+}
+
+figure img {
+  @apply !w-full object-cover rounded-t-md;
+}
+
+figure.image figcaption {
+  @apply text-[#5b7c98] !mt-0 text-sm text-center p-3 px-[10px] bg-[#f8f7f7] rounded-b-md;
+}
+
 .custom-shadow {
   box-shadow: rgba(31, 31, 31, 0.12) 0px 1px 6px,
     rgba(31, 31, 31, 0.12) 0px 1px 4px;
@@ -230,6 +247,16 @@ html *::-webkit-scrollbar-track {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+}
+
+.article-page-bg {
+  width: 100%;
+  aspect-ratio: 6.5;
+  background: url("/public/assets/images/home-page/bookingcare-cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center 12%;
 }
 
 .search-section {

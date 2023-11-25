@@ -48,7 +48,7 @@ export default function HandbooksSwiper({
           {handbooks?.map((handbook) => (
             <SwiperSlide key={handbook.id}>
               <div>
-                <Link to={`/handbook/${handbook?.slug}`} className="block">
+                <Link to={`/cam-nang/${handbook?.slug}`} className="block">
                   <StyledImage
                     wrapperClasses="w-full aspect-[1.9] rounded-md border"
                     src={arrayBufferToBase64(handbook?.thumbnail)}
@@ -56,7 +56,7 @@ export default function HandbooksSwiper({
                     imageClasses="rounded-md"
                   />
                 </Link>
-                <Link to={`/handbook/${handbook?.id}`} className="block">
+                <Link to={`/cam-nang/${handbook?.id}`} className="block">
                   <h3 className="my-3 font-semibold leading-7 line-clamp-2">
                     {handbook?.title}
                   </h3>

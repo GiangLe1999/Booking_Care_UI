@@ -2,6 +2,7 @@ import axios from "../axios";
 import {
   CreateNewArticleInput,
   GetAllArticlesOutput,
+  GetArticleBySlugOutput,
 } from "../dtos/articles.dto";
 
 export const createNewTip = async (
@@ -21,5 +22,16 @@ export const getHomeTips = async (): Promise<GetAllArticlesOutput> => {
     return data as GetAllArticlesOutput;
   } catch (error) {
     return { ok: false, error: "Could not load tips" };
+  }
+};
+
+export const getTipBySlug = async (
+  slug: string
+): Promise<GetArticleBySlugOutput> => {
+  try {
+    const { data } = await axios.get(`/api/tip?slug=${slug}`);
+    return data as GetArticleBySlugOutput;
+  } catch (error) {
+    return { ok: false, error: "Could not load tip" };
   }
 };
