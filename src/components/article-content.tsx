@@ -22,10 +22,8 @@ const ArticleContent: FC<Props> = ({ belongsTo, article }): JSX.Element => {
   const [thumbnail, setThumbnail] = useState("");
 
   useEffect(() => {
-    if (article) {
-      setThumbnail(article.thumbnail);
-    }
-  });
+    setThumbnail(article?.thumbnail || "");
+  }, [article?.thumbnail]);
 
   return (
     <div>
@@ -109,25 +107,29 @@ const ArticleContent: FC<Props> = ({ belongsTo, article }): JSX.Element => {
             </div>
 
             <div className="mt-8">
-              <LikeAndShare
-                href={`${process.env.REACT_APP_BASE_URL}${
-                  belongsTo === "Cẩm nang"
-                    ? path.HANDBOOK
-                    : belongsTo === "Sống khỏe"
-                    ? path.LONGLIVE
-                    : path.TIP
-                }/${article?.slug}`}
-              />
+              {article?.slug && (
+                <>
+                  <LikeAndShare
+                    href={`${process.env.REACT_APP_BASE_URL}${
+                      belongsTo === "Cẩm nang"
+                        ? path.HANDBOOK
+                        : belongsTo === "Sống khỏe"
+                        ? path.LONGLIVE
+                        : path.TIP
+                    }/${article?.slug}`}
+                  />
 
-              <Comments
-                href={`${process.env.REACT_APP_BASE_URL}${
-                  belongsTo === "Cẩm nang"
-                    ? path.HANDBOOK
-                    : belongsTo === "Sống khỏe"
-                    ? "/song-khoe"
-                    : path.TIP
-                }/${article?.slug}`}
-              />
+                  <Comments
+                    href={`${process.env.REACT_APP_BASE_URL}${
+                      belongsTo === "Cẩm nang"
+                        ? path.HANDBOOK
+                        : belongsTo === "Sống khỏe"
+                        ? "/song-khoe"
+                        : path.TIP
+                    }/${article?.slug}`}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

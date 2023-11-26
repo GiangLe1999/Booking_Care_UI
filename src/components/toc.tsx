@@ -13,9 +13,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
 
   const listWrapperRef = useRef<HTMLUListElement>(null);
 
-  // Seting data-id cho heading và cập nhật state headings
-  useEffect(() => {
-    // Select tất cả h2, h3, h4, h5, h6 nằm trong class selector = content
+  const createHeadingArray = () => {
     const headingList = document
       .querySelector(selector)!
       .querySelectorAll("h2,h3,h4") as NodeListOf<HTMLHeadElement>;
@@ -27,6 +25,10 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
     });
 
     setHeadings(headingArray);
+  };
+
+  useEffect(() => {
+    createHeadingArray();
   }, []);
 
   // Tìm currentHeading
