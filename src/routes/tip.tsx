@@ -52,6 +52,7 @@ const Tip: FC<Props> = (props): JSX.Element => {
         articles={relatedArticles}
         isLoadingArticles={isLoadingArticles}
         categorySlug="danh-cho-bac-si"
+        reloadDocument
       />
       <RootFooter />
     </>

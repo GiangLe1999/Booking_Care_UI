@@ -31,6 +31,12 @@ import ManageTips from "./routes/manage-tips";
 import Handbook from "./routes/handbook";
 import Longlive from "./routes/longlive";
 import Tip from "./routes/tip";
+import Tips from "./routes/tips";
+import Handbooks from "./routes/handbooks";
+import Longlives from "./routes/longlives";
+import SearchHandbookResults from "./routes/search-hanbook-results";
+import SearchLongliveResults from "./routes/search-longlive-results";
+import SearchTipResults from "./routes/search-tip-results";
 
 const router = createBrowserRouter([
   {
@@ -45,9 +51,15 @@ const router = createBrowserRouter([
       { path: "chuyen-khoa", element: <Specialties /> },
       { path: "co-so-y-te/tat-ca", element: <Clinics /> },
       { path: "bac-si", element: <Doctors /> },
+      { path: "cam-nang", element: <Handbooks /> },
       { path: "cam-nang/:slug", element: <Handbook /> },
+      { path: "song-khoe", element: <Longlives /> },
       { path: "song-khoe/:slug", element: <Longlive /> },
+      { path: "danh-cho-bac-si", element: <Tips /> },
       { path: "danh-cho-bac-si/:slug", element: <Tip /> },
+      { path: "cam-nang/tim-kiem", element: <SearchHandbookResults /> },
+      { path: "song-khoe/tim-kiem", element: <SearchLongliveResults /> },
+      { path: "danh-cho-bac-si/tim-kiem", element: <SearchTipResults /> },
     ],
   },
 

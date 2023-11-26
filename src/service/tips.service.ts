@@ -35,3 +35,18 @@ export const getTipBySlug = async (
     return { ok: false, error: "Could not load tip" };
   }
 };
+
+export const getTipsResults = async (
+  query: string
+): Promise<GetAllArticlesOutput> => {
+  try {
+    if (query && query.length > 0) {
+      const { data } = await axios.get(`/api/tip-results?query=${query}`);
+      return data as GetAllArticlesOutput;
+    } else {
+      return { ok: false, error: "Missing required parameter" };
+    }
+  } catch (error) {
+    return { ok: false, error: "Could not load tips" };
+  }
+};

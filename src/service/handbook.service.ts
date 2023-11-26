@@ -35,3 +35,18 @@ export const getHandbookBySlug = async (
     return { ok: false, error: "Could not load handbook" };
   }
 };
+
+export const getHandbookResults = async (
+  query: string
+): Promise<GetAllArticlesOutput> => {
+  try {
+    if (query && query.length > 0) {
+      const { data } = await axios.get(`/api/handbook-results?query=${query}`);
+      return data as GetAllArticlesOutput;
+    } else {
+      return { ok: false, error: "Missing required parameter" };
+    }
+  } catch (error) {
+    return { ok: false, error: "Could not load handbooks" };
+  }
+};

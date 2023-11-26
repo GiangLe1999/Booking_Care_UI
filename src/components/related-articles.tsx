@@ -14,16 +14,22 @@ interface Props {
   articles: FetchedArticle[] | undefined;
   isLoadingArticles: boolean;
   categorySlug: string;
+  reloadDocument?: boolean;
+  customTitle?: string;
 }
 
 const RelatedArticles: FC<Props> = ({
   articles,
   isLoadingArticles,
   categorySlug,
+  reloadDocument,
+  customTitle,
 }): JSX.Element => {
   return (
     <div className="container mb-10">
-      <h3 className="font-semibold mt-10 mb-3 text-2xl">Bài viết liên quan</h3>
+      <h3 className="font-semibold mt-10 mb-3 text-2xl">
+        {customTitle ? customTitle : "Bài viết liên quan"}{" "}
+      </h3>
       <div className="relative">
         {isLoadingArticles ? (
           <div className="grid grid-cols-3 gap-4 w-full h-[200px]">
@@ -31,7 +37,7 @@ const RelatedArticles: FC<Props> = ({
               <SwiperSlide key={index}>
                 <Skeleton
                   count={1}
-                  className="w-full aspect-[1.8] rounded-md"
+                  className="w-full aspect-[1.5] rounded-md"
                 />
               </SwiperSlide>
             ))}
@@ -55,7 +61,7 @@ const RelatedArticles: FC<Props> = ({
                 <ArticleCard
                   article={article}
                   categorySlug={categorySlug}
-                  reloadDocument
+                  reloadDocument={reloadDocument}
                 />
               </SwiperSlide>
             ))}

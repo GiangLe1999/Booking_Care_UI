@@ -202,3 +202,10 @@ export const mediaItems = [
     link: "https://dantri.com.vn/nhan-tai-dat-viet/san-pham-nen-tang-dat-kham-booking-care-201908201625624751.htm",
   },
 ];
+
+export const createArticleProcessItem = [
+  "Tham vấn y khoa với bác sĩ chuyên môn",
+  "Nội dung xác thực",
+  "Cập nhật thường xuyên",
+  "Tham khảo nguồn tin cậy",
+];

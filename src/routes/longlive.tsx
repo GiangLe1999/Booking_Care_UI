@@ -55,6 +55,7 @@ const Longlive: FC<Props> = (props): JSX.Element => {
         articles={relatedArticles}
         isLoadingArticles={isLoadingArticles}
         categorySlug="song-khoe"
+        reloadDocument
       />
       <RootFooter />
     </>

@@ -22,7 +22,7 @@ const Tips: FC<Props> = ({ tips, isLoadingTips }): JSX.Element => {
         <BtnWithIcon
           content="see-more"
           iconBehind={BiSolidChevronsRight}
-          to={path.LONGLIVE}
+          to={path.TIP}
           customClasses="!rounded-md after:!rounded-md"
         />
       </div>

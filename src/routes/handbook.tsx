@@ -55,6 +55,7 @@ const Handbook: FC<Props> = (props): JSX.Element => {
         articles={relatedArticles}
         isLoadingArticles={isLoadingArticles}
         categorySlug="cam-nang"
+        reloadDocument
       />
       <RootFooter />
     </>
