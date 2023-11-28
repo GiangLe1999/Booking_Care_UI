@@ -2,10 +2,6 @@ import { FC, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FormInput from "../../components/form-input";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import BtnWithLoading from "../../components/btn-with-loading";
-import { FcGoogle } from "react-icons/fc";
 import { loginHandler } from "../../service/user.service";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -13,7 +9,14 @@ import { userLogin } from "../../redux/slices/user-slice";
 import { path } from "../../constants";
 import { useNavigate } from "react-router-dom";
 import { LoggedinUser } from "../../dtos/user.dto";
+import { setToken } from "../../redux/slices/token-slice";
+import { useGetUser } from "../../hooks/useGetUser";
+import { Navigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import FormInput from "../../components/form-input";
+import BtnWithLoading from "../../components/btn-with-loading";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 
 const schema = Yup.object({
   email: Yup.string()
@@ -34,6 +37,8 @@ interface FormValues {
 const Login: FC<Props> = (props): JSX.Element | null => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const user = useGetUser();
+  console.log(user);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,17 +64,28 @@ const Login: FC<Props> = (props): JSX.Element | null => {
       toast.error(res.error);
     } else {
       dispatch(userLogin(res.user as LoggedinUser));
+      dispatch(setToken(res.token as string));
       toast.success("Login successfully!");
 
       if (res.user?.roleId === "R1") {
-        navigate(path.MANAGE_USER);
+        navigate(path.MANAGE_USER, { replace: true });
       } else if (res.user?.roleId === "R2") {
-        navigate(path.MANAGE_SCHEDULE);
+        navigate(path.MANAGE_SCHEDULE, { replace: true });
+      } else if (res.user?.roleId === "R3") {
+        navigate("/", { replace: true });
       }
     }
 
     setIsLoading(false);
   };
+
+  if (user?.roleId === "R1")
+    return <Navigate to={path.MANAGE_USER} replace={true} />;
+
+  if (user?.roleId === "R2")
+    return <Navigate to={path.MANAGE_SCHEDULE} replace={true} />;
+
+  if (user?.roleId === "R3") return <Navigate to="/" replace={true} />;
 
   return (
     <div className="h-screen main-gradient grid place-items-center">

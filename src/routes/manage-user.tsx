@@ -21,10 +21,14 @@ const ManageUser: FC<Props> = (props): JSX.Element => {
   const [openCreateModal, setOpenCreateModal] = useState(false);
 
   const fetchAllUsers = async () => {
-    setIsLoading(true);
-    const res = (await getAllUsers()) as GetAllUsersOutput;
-    setUsers(res.users?.reverse());
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const res = (await getAllUsers()) as GetAllUsersOutput;
+      setUsers(res.users?.reverse());
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

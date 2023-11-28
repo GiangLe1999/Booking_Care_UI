@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import languageReducer from "./slices/language-slice";
 import userReducer from "./slices/user-slice";
+import tokenReducer from "./slices/token-slice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
@@ -14,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   language: languageReducer,
   user: userReducer,
+  token: tokenReducer,
 });
 
 const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(

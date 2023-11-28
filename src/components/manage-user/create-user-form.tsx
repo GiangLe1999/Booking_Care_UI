@@ -94,18 +94,22 @@ const CreateUserForm: FC<Props> = ({
   };
 
   const onSubmit = async (data: FormValues) => {
-    setIsLoading(true);
-    const res = await createNewUser({ ...data, avatar });
+    try {
+      setIsLoading(true);
+      const res = await createNewUser({ ...data, avatar });
 
-    if (!res.ok) {
-      toast.error(res.error);
-    } else {
-      toast.success("Create user successfully!");
-      setOpenCreateModal(false);
-      fetchAllUsers();
+      if (!res.ok) {
+        toast.error(res.error);
+      } else {
+        toast.success("Create user successfully!");
+        setOpenCreateModal(false);
+        fetchAllUsers();
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
     }
-
-    setIsLoading(false);
   };
 
   return (

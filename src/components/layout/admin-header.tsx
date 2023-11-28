@@ -7,6 +7,7 @@ import { changeLanguage } from "../../redux/slices/language-slice";
 import { useGetLanguage } from "../../hooks/useGetLanguage";
 import { FormattedMessage } from "react-intl";
 import { useGetUser } from "../../hooks/useGetUser";
+import { removeToken } from "../../redux/slices/token-slice";
 
 interface Props {}
 
@@ -47,7 +48,10 @@ const AdminHeader: FC<Props> = (props): JSX.Element => {
 
         <div
           className="px-4 cursor-pointer"
-          onClick={() => dispatch(userLogout())}
+          onClick={() => {
+            dispatch(userLogout());
+            dispatch(removeToken());
+          }}
         >
           <RiLogoutBoxRLine size={20} />
         </div>

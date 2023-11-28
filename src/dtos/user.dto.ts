@@ -23,6 +23,7 @@ export interface FetchedUser {
 
 export interface LoginOutput extends CoreOutput {
   user?: LoggedinUser;
+  token?: string;
 }
 
 export interface GetAllUsersOutput extends CoreOutput {

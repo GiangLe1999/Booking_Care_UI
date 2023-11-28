@@ -11,6 +11,7 @@ export const loginHandler = async (loginInfo: {
   password: string;
 }): Promise<LoginOutput> => {
   const { data } = await axios.post("/api/login", loginInfo);
+
   return data;
 };
 

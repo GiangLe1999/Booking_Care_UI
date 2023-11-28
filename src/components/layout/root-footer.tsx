@@ -93,7 +93,7 @@ const RootFooter: FC<Props> = (props): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 mb-6">
               <StyledImage
                 wrapperClasses="w-[65px] aspect-square"
                 src="/assets/images/home-page/logo-bernard.png"
@@ -107,6 +107,24 @@ const RootFooter: FC<Props> = (props): JSX.Element => {
                 </h6>
                 <p>
                   <FormattedMessage id="rootfooter.partner2-explain" />
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <StyledImage
+                wrapperClasses="w-[65px] aspect-square"
+                src="/assets/images/home-page/logo-doctor-check.png"
+                alt="Doctor Check Logo"
+                imageClasses="!object-contain"
+              />
+
+              <div className="flex-1 text-sm">
+                <h6 className="font-semibold mb-1">
+                  <FormattedMessage id="rootfooter.partner3-title" />
+                </h6>
+                <p>
+                  <FormattedMessage id="rootfooter.partner3-explain" />
                 </p>
               </div>
             </div>
