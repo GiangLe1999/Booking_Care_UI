@@ -37,6 +37,7 @@ import Longlives from "./routes/longlives";
 import SearchHandbookResults from "./routes/search-hanbook-results";
 import SearchLongliveResults from "./routes/search-longlive-results";
 import SearchTipResults from "./routes/search-tip-results";
+import SearchResults from "./routes/search-results";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       { path: "cam-nang/tim-kiem", element: <SearchHandbookResults /> },
       { path: "song-khoe/tim-kiem", element: <SearchLongliveResults /> },
       { path: "danh-cho-bac-si/tim-kiem", element: <SearchTipResults /> },
+      { path: "tim-kiem", element: <SearchResults /> },
     ],
   },
 
